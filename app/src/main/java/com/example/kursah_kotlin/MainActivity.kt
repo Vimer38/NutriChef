@@ -51,7 +51,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
     var selectedFilters by remember { mutableStateOf(setOf<String>()) }
     var showExtraFilters by remember { mutableStateOf(false) }
 
-    val baseFilters = listOf("Завтрак", "Обед", "Ужин", "Веган", "Без глютена", "Низкоуглеводное")
+    val baseFilters = listOf("Завтрак", "Обед", "Ужин", "Веган", "Без глютена", "Низкоуглеводное", "Высокоуглеводное")
     val extraFilters = listOf("Без сахара", "Высокобелковое", "Кето", "Палео", "Для детей")
 
     Column(

@@ -2,7 +2,6 @@ package com.example.kursah_kotlin.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,19 +14,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Image
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -85,7 +80,7 @@ fun UserInfoScreen(
                         )
                     )
                 },
-                colors = androidx.compose.material3.TopAppBarDefaults.topAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.White
                 )
             )
@@ -188,7 +183,7 @@ fun UserInfoScreen(
                     .padding(horizontal = 24.dp)
                     .padding(bottom = 60.dp)
                     .height(55.dp),
-                shape = RoundedCornerShape(13.dp),
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(13.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(193, 190, 190)
                 )
@@ -233,14 +228,14 @@ fun InfoTextField(
             )
         },
         colors = TextFieldDefaults.textFieldColors(
-            containerColor = Color(238,238,238,100),
+            containerColor = Color(238, 238, 238, 100),
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             cursorColor = Color.Black,
             focusedTextColor = Color.Black,
             unfocusedTextColor = Color.Black
         ),
-        shape = RoundedCornerShape(12.dp),
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
         singleLine = true,
         textStyle = TextStyle(
             fontFamily = PlayfairDisplayFontFamily,
@@ -261,8 +256,8 @@ fun PhotoUploadField(
             .fillMaxWidth()
             .height(56.dp)
             .background(
-                color = Color(238, 238, 238,100),
-                shape = RoundedCornerShape(12.dp)
+                color = Color(238, 238, 238, 100),
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
             )
             .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -272,7 +267,7 @@ fun PhotoUploadField(
             modifier = Modifier
                 .size(40.dp)
                 .background(
-                    color = Color(217,217,217,100),
+                    color = Color(217, 217, 217, 100),
                     shape = CircleShape
                 )
                 .clickable { onUploadClick() },

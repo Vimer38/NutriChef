@@ -60,7 +60,6 @@ fun MainScreen(modifier: Modifier = Modifier) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Поисковая строка
         OutlinedTextField(
             value = searchText,
             onValueChange = { searchText = it },
@@ -69,16 +68,13 @@ fun MainScreen(modifier: Modifier = Modifier) {
             singleLine = true
         )
 
-        // Заголовок фильтров
         Text("Фильтры:", style = MaterialTheme.typography.titleMedium)
 
-        // Основные фильтры + кнопка управления
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            // Основные фильтры в FlowRow внутри Box с весом
             Box(
                 modifier = Modifier.weight(1f)
             ) {
@@ -106,7 +102,6 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            // Кнопка "+" / "–"
             IconButton(
                 onClick = { showExtraFilters = !showExtraFilters },
                 modifier = Modifier.size(40.dp)
@@ -119,7 +114,6 @@ fun MainScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        // Дополнительные фильтры (появляются по нажатию)
         if (showExtraFilters) {
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -146,11 +140,10 @@ fun MainScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        // Список результатов (заглушка)
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f), // чтобы не вытеснял другие элементы
+                .weight(1f),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(10) { index ->
@@ -169,7 +162,6 @@ fun MainScreen(modifier: Modifier = Modifier) {
     }
 }
 
-// Тема (на случай, если у тебя её нет)
 @Composable
 fun HealthyEatingTheme(content: @Composable () -> Unit) {
     MaterialTheme(content = content)

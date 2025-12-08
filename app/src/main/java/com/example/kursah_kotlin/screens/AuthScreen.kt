@@ -88,7 +88,6 @@ fun AuthScreen() {
                 onValueChange = {passwordText = it},
                 placeholder = "Пароль"
             )
-            // Поле подтверждения пароля показывается только в режиме регистрации
             if (isRegisterMode) {
                 Spacer(modifier = Modifier.height(10.dp))
                 CustomTextField(

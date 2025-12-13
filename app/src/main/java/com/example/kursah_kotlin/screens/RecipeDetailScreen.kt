@@ -1,5 +1,6 @@
 package com.example.kursah_kotlin.screens
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -18,37 +19,69 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.Timeline
-import androidx.compose.material.icons.outlined.AccessTime
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.ArrowDownward
 import androidx.compose.material.icons.outlined.Bookmark
-import androidx.compose.material.icons.outlined.ExpandMore
-import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.kursah_kotlin.data.remote.dto.RecipeDto
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Preview
 @Composable
 fun RecipeDetailScreen(
     onBackClick: () -> Unit = {},
     onBookmarkClick: () -> Unit = {},
-    onNavigationClick: (String) -> Unit = {}
+    onNavigationClick: (String) -> Unit = {},
+    recipeId: String = ""
 ) {
+    val context = LocalContext.current
+    var recipe by remember { mutableStateOf<RecipeDto?>(null) }
+
+    LaunchedEffect(recipeId) {
+        val found = loadRecipeById(context, recipeId)
+        recipe = found
+    }
+
+    val title = recipe?.title ?: "Рецепт"
+    val timeText = recipe?.timeMinutes?.let { "$it мин" } ?: "—"
+    val difficulty = recipe?.difficulty ?: "Не указано"
+    val category = recipe?.category ?: "Без категории"
+    val diets = recipe?.tags.orEmpty()
+    val description = recipe?.description ?: recipe?.steps?.firstOrNull() ?: "Описание недоступно"
+    val ingredients = recipe?.ingredients ?: emptyList()
+    val steps = recipe?.steps ?: emptyList()
+    val ratingValue = recipe?.rating ?: 0.0
+
+    var isIngredientsExpanded by remember { mutableStateOf(true) }
+    var isStepsExpanded by remember { mutableStateOf(true) }
+
     Scaffold(
         bottomBar = {
             BottomNavigationBar(
@@ -77,12 +110,13 @@ fun RecipeDetailScreen(
                         .background(
                             color = Color(239,239,239,100),
                             shape = CircleShape
-                        ),
+                        )
+                        .clickable { onBackClick() },
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "back",
+                        contentDescription = "Назад",
                         tint = Color.Black,
                     )
                 }
@@ -100,7 +134,7 @@ fun RecipeDetailScreen(
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Text(
-                        text = " ",
+                        text = "",
                         style = TextStyle(
                             fontFamily = PlayfairDisplayFontFamily,
                             fontSize = 14.sp,
@@ -119,7 +153,7 @@ fun RecipeDetailScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Протеиновый салат",
+                    text = title,
                     style = TextStyle(
                         fontFamily = PlayfairDisplayFontFamily,
                         fontSize = 26.sp,
@@ -141,7 +175,7 @@ fun RecipeDetailScreen(
                         )
                     )
                     Text(
-                        text = "4.7",
+                        text = if (ratingValue > 0) ratingValue.toString() else "0.0",
                         style = TextStyle(
                             fontFamily = PlayfairDisplayFontFamily,
                             fontSize = 13.sp,
@@ -160,11 +194,15 @@ fun RecipeDetailScreen(
             ) {
                 InfoChip(
                     icon = Icons.Outlined.Timer,
-                    text = "10 мин"
+                    text = timeText
                 )
                 InfoChip(
                     icon = Icons.Default.Timeline,
-                    text = "Легко"
+                    text = difficulty
+                )
+                InfoChip(
+                    icon = Icons.Default.AutoAwesome,
+                    text = category
                 )
             }
 
@@ -177,7 +215,7 @@ fun RecipeDetailScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.BookmarkBorder,
-                    contentDescription = "Bookmark",
+                    contentDescription = "Закладка",
                     tint = Color.Black,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -185,30 +223,14 @@ fun RecipeDetailScreen(
                         .size(24.dp)
                         .clickable { onBookmarkClick() }
                 )
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(bottom = 12.dp)
-                        .background(Color(200, 200, 200), RoundedCornerShape(12.dp))
-                        .padding(horizontal = 12.dp, vertical = 6.dp)
-                ) {
-                    Text(
-                        text = "1 – 8",
-                        style = TextStyle(
-                            fontFamily = PlayfairDisplayFontFamily,
-                            fontSize = 12.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                }
+
             }
 
             Spacer(modifier = Modifier.height(20.dp))
             SectionTitle("Описание")
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "Кальмары в макалдималах макалдималам",
+                text = description,
                 style = TextStyle(
                     fontFamily = PlayfairDisplayFontFamily,
                     fontSize = 14.sp,
@@ -219,22 +241,77 @@ fun RecipeDetailScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            SectionHeaderWithArrow("Ингредиенты")
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            SectionHeaderWithArrow("Приготовление")
+            SectionHeaderWithArrow(
+                title = "Ингредиенты",
+                isExpanded = isIngredientsExpanded,
+                onToggle = { isIngredientsExpanded = !isIngredientsExpanded }
+            )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "Лываазымтвтзвизьзнгвтгчигжзшпгваазнгчпашпзурх итзвжхззцэнгжтзнкегрлжжызжвпзвывовзжсбсурвьтирлтп зшвхзргагачавршикПывазззщтзвтззшгзръгвхпцчвилвывзпи втзаватввизньвццзрпкгнгтгжвчтчЗшвчвпзвпвпзщвюю бквзцутнтацчпиршршатнргнвпкг.Лываазымтвтз визьзнгвтгчигжшпгваазнгчпашпзурхитзвжхззцэнгжтзнкег рлжжызжвпзвывовзжсбсурвьтирлтк"
-                    .repeat(2),
-                style = TextStyle(
-                    fontFamily = PlayfairDisplayFontFamily,
-                    fontSize = 14.sp,
-                    color = Color.Black,
-                    fontWeight = FontWeight.Medium
-                )
+            if (isIngredientsExpanded) {
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    if (ingredients.isEmpty()) {
+                        Text(
+                            text = "Нет данных",
+                            style = TextStyle(
+                                fontFamily = PlayfairDisplayFontFamily,
+                                fontSize = 14.sp,
+                                color = Color.Gray
+                            )
+                        )
+                    } else {
+                        ingredients.forEach { amountDto ->
+                            val name = amountDto.ingredient?.name
+                            val amount = amountDto.amount?.let { amt ->
+                                val unit = amountDto.unit ?: ""
+                                "$amt $unit".trim()
+                            } ?: ""
+                            Text(
+                                text = listOfNotNull(name, amount.takeIf { it.isNotEmpty() }?.let { " - $it" }).joinToString(""),
+                                style = TextStyle(
+                                    fontFamily = PlayfairDisplayFontFamily,
+                                    fontSize = 14.sp,
+                                    color = Color.Black
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            SectionHeaderWithArrow(
+                title = "Приготовление",
+                isExpanded = isStepsExpanded,
+                onToggle = { isStepsExpanded = !isStepsExpanded }
             )
+            Spacer(modifier = Modifier.height(8.dp))
+            if (isStepsExpanded) {
+                if (steps.isEmpty()) {
+                    Text(
+                        text = "Нет данных",
+                        style = TextStyle(
+                            fontFamily = PlayfairDisplayFontFamily,
+                            fontSize = 14.sp,
+                            color = Color.Gray
+                        )
+                    )
+                } else {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        steps.forEachIndexed { index, step ->
+                            Text(
+                                text = "${index + 1}. $step",
+                                style = TextStyle(
+                                    fontFamily = PlayfairDisplayFontFamily,
+                                    fontSize = 14.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Medium
+                                )
+                            )
+                        }
+                    }
+                }
+            }
 
             Spacer(modifier = Modifier.height(80.dp))
         }
@@ -284,10 +361,15 @@ private fun SectionTitle(title: String) {
 }
 
 @Composable
-private fun SectionHeaderWithArrow(title: String) {
+private fun SectionHeaderWithArrow(
+    title: String,
+    isExpanded: Boolean,
+    onToggle: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onToggle() }
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
@@ -297,7 +379,9 @@ private fun SectionHeaderWithArrow(title: String) {
             imageVector = Icons.Outlined.ArrowDownward,
             contentDescription = null,
             tint = Color.Black,
-            modifier = Modifier.size(20.dp)
+            modifier = Modifier
+                .size(20.dp)
+                .rotate(if (isExpanded) 180f else 0f)
         )
     }
     Spacer(
@@ -306,5 +390,20 @@ private fun SectionHeaderWithArrow(title: String) {
             .height(1.dp)
             .background(Color(230, 230, 230))
     )
+}
+
+private suspend fun loadRecipeById(context: Context, recipeId: String): RecipeDto? {
+    if (recipeId.isBlank()) return null
+    return try {
+        val jsonString = withContext(Dispatchers.IO) {
+            context.assets.open("recipes.json").bufferedReader().use { it.readText() }
+        }
+        val type = object : TypeToken<List<RecipeDto>>() {}.type
+        val recipes = Gson().fromJson<List<RecipeDto>>(jsonString, type) ?: emptyList()
+        recipes.find { it.id == recipeId }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
 }
 

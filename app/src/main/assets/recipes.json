@@ -1,0 +1,1781 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "title": "Паста Карбонара",
+    "description": "Классическая итальянская паста с хрустящим беконом и сливочным сырно-яичным соусом.",
+    "rating": 4.7,
+    "timeMinutes": 25,
+    "category": "Горячее",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Спагетти"
+        },
+        "amount": 400.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Бекон или гуанчиале"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 4.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр Пекорино Романо"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Черный перец свежемолотый"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 580,
+      "protein": 24,
+      "fat": 32,
+      "fatSaturated": 14,
+      "carbohydrates": 48,
+      "sugar": 2.5,
+      "fiber": 2.8,
+      "sodium": 980,
+      "potassium": 420,
+      "calcium": 180,
+      "iron": 2.8,
+      "vitaminA": 220,
+      "vitaminC": 1.5,
+      "vitaminD": 1.8,
+      "cholesterol": 210,
+      "omega3": 0.2
+    },
+    "tags": [
+      "С мясом",
+      "Высокобелковое",
+      "Высокое железо"
+    ],
+    "steps": [
+      "Нарежьте бекон небольшими кусочками и обжарьте на сковороде до хрустящей корочки.",
+      "Отварите спагетти в подсоленной воде согласно инструкции на упаковке, сохраните 1 стакан воды от варки.",
+      "В миске взбейте яйца, добавьте тертый сыр и обильно поперчите.",
+      "Слейте воду с пасты, оставив немного жидкости, и быстро смешайте с беконом.",
+      "Снимите сковороду с огня, добавьте яично-сырную смесь, интенсивно помешивая.",
+      "Добавляйте воду от варки пасты по необходимости для получения кремовой консистенции.",
+      "Подавайте немедленно, посыпав дополнительным сыром и перцем."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567891",
+    "title": "Жаркое из свинины с картофелем",
+    "description": "Ароматное жаркое из нежной свинины с картофелем и овощами в горшочке.",
+    "rating": 4.6,
+    "timeMinutes": 90,
+    "category": "Горячее",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Свинина (лопатка)"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Картофель"
+        },
+        "amount": 800.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Морковь"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 4.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сметана"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лавровый лист"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 420,
+      "protein": 28,
+      "fat": 22,
+      "fatSaturated": 8,
+      "carbohydrates": 35,
+      "sugar": 5,
+      "fiber": 4.5,
+      "sodium": 650,
+      "potassium": 950,
+      "calcium": 80,
+      "iron": 3.2,
+      "vitaminA": 850,
+      "vitaminC": 25,
+      "vitaminD": 0.8,
+      "cholesterol": 90,
+      "omega3": 0.3
+    },
+    "tags": [
+      "С мясом",
+      "Высокобелковое",
+      "Высокое железо"
+    ],
+    "steps": [
+      "Свинину нарежьте кубиками 3×3 см, обжарьте на растительном масле до румяной корочки.",
+      "Лук нарежьте полукольцами, морковь соломкой, обжарьте до мягкости.",
+      "Картофель нарежьте крупными кубиками.",
+      "В горшочки выложите слоями: мясо, овощи, картофель. Добавьте лавровый лист и чеснок.",
+      "Сметану смешайте с 200 мл воды, залейте содержимое горшочков.",
+      "Накройте крышкой и запекайте при 180°C 1,5 часа.",
+      "Подавайте прямо в горшочках, посыпав свежей зеленью."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567892",
+    "title": "Стейк из говядины с овощами гриль",
+    "description": "Сочный стейк из говяжьей вырезки с сезонными овощами на гриле.",
+    "rating": 4.8,
+    "timeMinutes": 30,
+    "category": "Горячее",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Говяжья вырезка"
+        },
+        "amount": 400.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кабачок"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Баклажан"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец болгарский"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Розмарин свежий"
+        },
+        "amount": 2.0,
+        "unit": "веточки"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль морская крупная"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный горошком"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 380,
+      "protein": 35,
+      "fat": 18,
+      "fatSaturated": 6,
+      "carbohydrates": 15,
+      "sugar": 8,
+      "fiber": 5.5,
+      "sodium": 320,
+      "potassium": 880,
+      "calcium": 45,
+      "iron": 4.5,
+      "vitaminA": 620,
+      "vitaminC": 95,
+      "vitaminD": 0.5,
+      "cholesterol": 95,
+      "omega3": 0.4
+    },
+    "tags": [
+      "С мясом",
+      "Высокобелковое",
+      "Высокое железо",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Говяжью вырезку промокните бумажным полотенцем, натрите оливковым маслом, солью и перцем.",
+      "Овощи нарежьте крупными дольками, сбрызните оливковым маслом.",
+      "Разогрейте гриль или сковороду-гриль до высокой температуры.",
+      "Обжарьте стейк по 3-4 минуты с каждой стороны для средней прожарки.",
+      "Овощи грильуйте 8-10 минут до мягкости и характерных полосок.",
+      "Дайте стейку отдохнуть 5 минут под фольгой, затем нарежьте поперек волокон.",
+      "Подавайте с овощами, украсив розмарином."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+    "title": "Борщ",
+    "description": "Сытный и ароматный свекольный суп с говядиной, поданный со сметаной.",
+    "rating": 4.8,
+    "timeMinutes": 90,
+    "category": "Супы",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Говядина на кости"
+        },
+        "amount": 500.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Свекла"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Капуста белокочанная"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Картофель"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Морковь"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Томатная паста"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Уксус столовый"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сметана"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зелень (укроп, петрушка)"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 22,
+      "fat": 12,
+      "fatSaturated": 4,
+      "carbohydrates": 35,
+      "sugar": 8,
+      "fiber": 6,
+      "sodium": 850,
+      "potassium": 780,
+      "calcium": 70,
+      "iron": 3.5,
+      "vitaminA": 650,
+      "vitaminC": 30,
+      "vitaminD": 0.2,
+      "cholesterol": 60,
+      "omega3": 0.1
+    },
+    "tags": [
+      "С мясом",
+      "Высокое железо"
+    ],
+    "steps": [
+      "Говядину залейте 3 литрами воды, доведите до кипения, снимите пену и варите 1,5 часа на медленном огне.",
+      "Натрите свеклу и морковь на крупной терке, лук мелко нарежьте.",
+      "Свеклу тушите с добавлением уксуса и томатной пасты 15 минут для сохранения цвета.",
+      "Добавьте в бульон нарезанный картофель и капусту, варите 15 минут.",
+      "Обжарьте лук и морковь на растительном масле до мягкости.",
+      "Добавьте тушеную свеклу и обжаренные овощи в бульон, варите еще 10 минут.",
+      "Перед подачей дайте борщу настояться 20-30 минут, подавайте со сметаной и зеленью."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789013",
+    "title": "Тыквенный суп-пюре",
+    "description": "Нежный крем-суп из тыквы со сливками и имбирем.",
+    "rating": 4.5,
+    "timeMinutes": 40,
+    "category": "Супы",
+    "difficulty": "Легко",
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Тыква"
+        },
+        "amount": 800.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Морковь"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Имбирь свежий"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливки 20%"
+        },
+        "amount": 200.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Овощной бульон"
+        },
+        "amount": 500.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец белый молотый"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Тыквенные семечки"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 210,
+      "protein": 4,
+      "fat": 12,
+      "fatSaturated": 6,
+      "carbohydrates": 22,
+      "sugar": 10,
+      "fiber": 3.5,
+      "sodium": 450,
+      "potassium": 680,
+      "calcium": 85,
+      "iron": 2.1,
+      "vitaminA": 12500,
+      "vitaminC": 22,
+      "vitaminD": 0.8,
+      "cholesterol": 30,
+      "omega3": 0.2
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Низкокалорийное",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Тыкву очистите от кожуры и семян, нарежьте кубиками.",
+      "Лук и морковь нарежьте мелкими кубиками, имбирь натрите на терке.",
+      "Обжарьте лук и морковь на оливковом масле 5 минут, добавьте тыкву и имбирь.",
+      "Залейте овощи бульоном, варите 25 минут до мягкости тыквы.",
+      "Погружным блендером измельчите суп до состояния пюре.",
+      "Добавьте сливки, прогрейте 2-3 минуты, не доводя до кипения.",
+      "Подавайте, украсив тыквенными семечками и сливками."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+    "title": "Греческий салат",
+    "description": "Свежий и яркий салат с овощами, сыром Фета и оливками под орегановой заправкой.",
+    "rating": 4.5,
+    "timeMinutes": 15,
+    "category": "Салат",
+    "difficulty": "Легко",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Помидоры"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Огурцы"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец болгарский"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук красный"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр Фета"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Маслины без косточки"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонный сок"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Орегано сушеный"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 250,
+      "protein": 8.5,
+      "fat": 20,
+      "fatSaturated": 6,
+      "carbohydrates": 6,
+      "sugar": 3.8,
+      "fiber": 3.2,
+      "sodium": 450,
+      "potassium": 320,
+      "calcium": 180,
+      "iron": 1.2,
+      "vitaminA": 150,
+      "vitaminC": 25,
+      "vitaminD": 0.5,
+      "cholesterol": 25,
+      "omega3": 0.3
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Низкокалорийное",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Помидоры и огурцы нарежьте крупными дольками.",
+      "Болгарский перец очистите от семян и нарежьте соломкой.",
+      "Красный лук нарежьте тонкими полукольцами.",
+      "Сыр Фета нарежьте кубиками примерно 2×2 см.",
+      "В большой салатнице смешайте все овощи, добавьте маслины и сыр.",
+      "Приготовьте заправку: смешайте оливковое масло, лимонный сок, орегано и соль.",
+      "Полейте салат заправкой, аккуратно перемешайте и подавайте сразу."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-345678901235",
+    "title": "Салат с тунцом и авокадо",
+    "description": "Питательный салат с консервированным тунцом, авокадо и яйцом.",
+    "rating": 4.4,
+    "timeMinutes": 10,
+    "category": "Салат",
+    "difficulty": "Легко",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Тунец консервированный в собственном соку"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Авокадо"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Листья салата"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Помидоры черри"
+        },
+        "amount": 150.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонный сок"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 25,
+      "fat": 22,
+      "fatSaturated": 4,
+      "carbohydrates": 8,
+      "sugar": 2.5,
+      "fiber": 6.5,
+      "sodium": 350,
+      "potassium": 720,
+      "calcium": 60,
+      "iron": 2.8,
+      "vitaminA": 450,
+      "vitaminC": 30,
+      "vitaminD": 5.8,
+      "cholesterol": 190,
+      "omega3": 1.2
+    },
+    "tags": [
+      "С рыбой",
+      "Высокобелковое",
+      "Низкокалорийное",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Яйца отварите вкрутую (8-9 минут), остудите и очистите.",
+      "Тунец слейте от жидкости, разомните вилкой.",
+      "Авокадо очистите от кожуры и нарежьте кубиками.",
+      "Помидоры черри разрежьте пополам.",
+      "Листья салата порвите руками.",
+      "Приготовьте заправку: смешайте оливковое масло, лимонный сок, соль и перец.",
+      "Соедините все ингредиенты в салатнице, полейте заправкой и аккуратно перемешайте."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-def0-456789012345",
+    "title": "Тирамису",
+    "description": "Изысканный итальянский десерт из пропитанных кофе савоярди и нежного крема маскарпоне.",
+    "rating": 4.9,
+    "timeMinutes": 40,
+    "category": "Десерты",
+    "difficulty": "Сложно",
+    "imageUrl": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр Маскарпоне"
+        },
+        "amount": 500.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Печенье Савоярди"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 4.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кофе эспрессо"
+        },
+        "amount": 300.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Какао-порошок"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ликер Амаретто или ром"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 420,
+      "protein": 9,
+      "fat": 26,
+      "fatSaturated": 15,
+      "carbohydrates": 38,
+      "sugar": 28,
+      "fiber": 1.5,
+      "sodium": 120,
+      "potassium": 210,
+      "calcium": 120,
+      "iron": 1.5,
+      "vitaminA": 180,
+      "vitaminC": 0,
+      "vitaminD": 0.8,
+      "cholesterol": 190,
+      "omega3": 0.05
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса"
+    ],
+    "steps": [
+      "Приготовьте крепкий кофе эспрессо, остудите и смешайте с ликером.",
+      "Отделите желтки от белков. Желтки взбейте с сахаром до белой пены.",
+      "Добавьте сыр Маскарпоне к желткам и аккуратно перемешайте до однородности.",
+      "Белки взбейте в крепкую пену и осторожно вмешайте в кремовую массу.",
+      "Быстро обмакивайте печенье Савоярди в кофейную смесь и выкладывайте в форму.",
+      "На слой печенья выложите половину крема, разровняйте.",
+      "Повторите слои: печенье, крем. Накройте и уберите в холодильник на 6 часов.",
+      "Перед подачей посыпьте какао-порошком через сито."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-def0-456789012346",
+    "title": "Панна-котта с ягодным соусом",
+    "description": "Нежный итальянский десерт из сливок с ванилью и свежим ягодным соусом.",
+    "rating": 4.7,
+    "timeMinutes": 30,
+    "category": "Десерты",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливки 33%"
+        },
+        "amount": 500.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 80.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Желатин"
+        },
+        "amount": 10.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ванильный экстракт"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Смесь ягод (клубника, малина, ежевика)"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар для соуса"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонный сок"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 4,
+      "fat": 25,
+      "fatSaturated": 16,
+      "carbohydrates": 22,
+      "sugar": 20,
+      "fiber": 2.5,
+      "sodium": 40,
+      "potassium": 180,
+      "calcium": 85,
+      "iron": 0.5,
+      "vitaminA": 950,
+      "vitaminC": 35,
+      "vitaminD": 1.2,
+      "cholesterol": 90,
+      "omega3": 0.1
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Желатин залейте 50 мл холодной воды, оставьте на 10 минут для набухания.",
+      "В сотейнике смешайте сливки, сахар и ванильный экстракт, нагрейте до 80°C, не доводя до кипения.",
+      "Добавьте набухший желатин в горячие сливки, размешайте до полного растворения.",
+      "Разлейте смесь по формам, остудите до комнатной температуры, затем уберите в холодильник на 4 часа.",
+      "Для соуса ягоды смешайте с сахаром и лимонным соком, проварите 5-7 минут до загустения.",
+      "Перед подачей опустите формы с панна-коттой в горячую воду на 10 секунд и переверните на тарелки.",
+      "Полейте ягодным соусом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-ef01-567890123456",
+    "title": "Омлет с овощами",
+    "description": "Пышный и сытный омлет с свежими помидорами, перцем и сыром, идеальный завтрак.",
+    "rating": 4.3,
+    "timeMinutes": 15,
+    "category": "Завтраки",
+    "difficulty": "Легко",
+    "imageUrl": "https://images.unsplash.com/photo-1593616795666-1d0ec0a66780?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Молоко"
+        },
+        "amount": 50.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Помидор"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец болгарский"
+        },
+        "amount": 0.5,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук зеленый"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр твердый"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Масло сливочное"
+        },
+        "amount": 15.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 290,
+      "protein": 19,
+      "fat": 21,
+      "fatSaturated": 9,
+      "carbohydrates": 6,
+      "sugar": 3.5,
+      "fiber": 1.2,
+      "sodium": 380,
+      "potassium": 310,
+      "calcium": 210,
+      "iron": 2.1,
+      "vitaminA": 450,
+      "vitaminC": 20,
+      "vitaminD": 2.5,
+      "cholesterol": 480,
+      "omega3": 0.4
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Высокобелковое",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Помидор и болгарский перец нарежьте мелкими кубиками.",
+      "Зеленый лук мелко нарежьте, сыр натрите на терке.",
+      "В миске взбейте яйца с молоком, солью и перцем до однородности.",
+      "На сковороде растопите сливочное масло, обжарьте овощи 3-4 минуты.",
+      "Залейте овощи яичной смесью, уменьшите огонь.",
+      "Посыпьте омлет тертым сыром и зеленым луком.",
+      "Накройте сковороду крышкой и готовьте 5-7 минут до полного схватывания.",
+      "Подавайте омлет горячим, сложив пополам или свернув рулетом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-ef01-567890123457",
+    "title": "Сырники с изюмом",
+    "description": "Нежные творожные сырники с изюмом, поданные со сметаной и вареньем.",
+    "rating": 4.6,
+    "timeMinutes": 25,
+    "category": "Завтраки",
+    "difficulty": "Легко",
+    "imageUrl": "https://images.unsplash.com/photo-1593616795666-1d0ec0a66780?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Творог 9%"
+        },
+        "amount": 500.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мука пшеничная"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 60.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Изюм"
+        },
+        "amount": 70.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ванильный сахар"
+        },
+        "amount": 10.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": 1.0,
+        "unit": "щепотка"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сметана"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 280,
+      "protein": 18,
+      "fat": 12,
+      "fatSaturated": 6,
+      "carbohydrates": 25,
+      "sugar": 12,
+      "fiber": 1.2,
+      "sodium": 180,
+      "potassium": 220,
+      "calcium": 150,
+      "iron": 1.5,
+      "vitaminA": 180,
+      "vitaminC": 1,
+      "vitaminD": 1.5,
+      "cholesterol": 120,
+      "omega3": 0.1
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Высокобелковое"
+    ],
+    "steps": [
+      "Изюм залейте кипятком на 10 минут, затем слейте воду и обсушите.",
+      "Творог протрите через сино или разомните вилкой.",
+      "Смешайте творог, яйца, сахар, ванильный сахар и соль.",
+      "Добавьте муку и изюм, аккуратно перемешайте до однородности.",
+      "Сформируйте сырники, обваляйте их в небольшом количестве муки.",
+      "Разогрейте сковороду с растительным маслом, обжарьте сырники по 3-4 минуты с каждой стороны до золотистой корочки.",
+      "Подавайте горячими со сметаной, вареньем или медом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-f012-678901234567",
+    "title": "Плов узбекский",
+    "description": "Ароматный и рассыпчатый плов с нежной бараниной, морковью и традиционными специями.",
+    "rating": 4.6,
+    "timeMinutes": 120,
+    "category": "Обеды",
+    "difficulty": "Сложно",
+    "imageUrl": "https://images.unsplash.com/photo-1585937421612-70ca003675ed?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Баранина (лопатка или грудинка)"
+        },
+        "amount": 800.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Рис для плова"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Морковь"
+        },
+        "amount": 500.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 2.0,
+        "unit": "головки"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Масло растительное"
+        },
+        "amount": 150.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зира (кумин)"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Барбарис сушеный"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 520,
+      "protein": 25,
+      "fat": 22,
+      "fatSaturated": 8,
+      "carbohydrates": 55,
+      "sugar": 5,
+      "fiber": 3.5,
+      "sodium": 620,
+      "potassium": 530,
+      "calcium": 45,
+      "iron": 4.2,
+      "vitaminA": 1200,
+      "vitaminC": 6,
+      "vitaminD": 0.3,
+      "cholesterol": 85,
+      "omega3": 0.3
+    },
+    "tags": [
+      "С мясом",
+      "Высокое железо"
+    ],
+    "steps": [
+      "Баранину нарежьте крупными кусками по 3-4 см.",
+      "Морковь нарежьте толстой соломкой, лук - полукольцами.",
+      "В казане разогрейте масло, обжарьте мясо до румяной корочки.",
+      "Добавьте лук и обжарьте до золотистого цвета.",
+      "Добавьте морковь, тушите 10 минут до мягкости.",
+      "Залейте содержимое водой на 2 см выше уровня, добавьте специи и соль.",
+      "Тушите зирвак (основу плова) 40 минут на медленном огне.",
+      "Промойте рис, разровняйте поверхность зирвака, воткните головки чеснока.",
+      "Аккуратно залейте рис водой на 2 см выше уровня, увеличьте огонь.",
+      "Когда вода выпарится, соберите рис горкой, накройте и томите 30 минут на медленном огне.",
+      "Перед подачей перемешайте плов, разложите по тарелкам с мясом сверху."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-f012-678901234568",
+    "title": "Куриные котлеты с картофельным пюре",
+    "description": "Нежные куриные котлеты с воздушным картофельным пюре и подливой.",
+    "rating": 4.5,
+    "timeMinutes": 50,
+    "category": "Обеды",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1585937421612-70ca003675ed?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Куриное филе"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 2.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйцо куриное"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Панировочные сухари"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Картофель"
+        },
+        "amount": 1000.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Молоко"
+        },
+        "amount": 100.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливочное масло"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 450,
+      "protein": 32,
+      "fat": 18,
+      "fatSaturated": 7,
+      "carbohydrates": 40,
+      "sugar": 4,
+      "fiber": 4.5,
+      "sodium": 580,
+      "potassium": 950,
+      "calcium": 90,
+      "iron": 2.8,
+      "vitaminA": 220,
+      "vitaminC": 35,
+      "vitaminD": 1.5,
+      "cholesterol": 140,
+      "omega3": 0.3
+    },
+    "tags": [
+      "С мясом",
+      "Высокобелковое"
+    ],
+    "steps": [
+      "Куриное филе и лук измельчите в мясорубке или блендере.",
+      "Добавьте яйцо, чеснок, соль и перец, хорошо перемешайте фарш.",
+      "Сформируйте котлеты, обваляйте их в панировочных сухарях.",
+      "Разогрейте сковороду с растительным маслом, обжарьте котлеты по 5-6 минут с каждой стороны.",
+      "Картофель очистите, отварите в подсоленной воде до готовности.",
+      "Слейте воду, разомните картофель, добавьте теплое молоко и сливочное масло.",
+      "Подавайте котлеты с картофельным пюре и овощным салатом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-7012-789012345678",
+    "title": "Лосось в медово-соевом соусе",
+    "description": "Нежное филе лосося в сладко-соленом имбирно-чесночном соусе с кунжутом.",
+    "rating": 4.7,
+    "timeMinutes": 25,
+    "category": "Ужины",
+    "difficulty": "Средне",
+    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Филе лосося"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мед"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соевый соус"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Имбирь свежий"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 2.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кунжутное масло"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кунжут семена"
+        },
+        "amount": 2.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зеленый лук"
+        },
+        "amount": 2.0,
+        "unit": "стебля"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 380,
+      "protein": 34,
+      "fat": 24,
+      "fatSaturated": 5,
+      "carbohydrates": 12,
+      "sugar": 10,
+      "fiber": 0.8,
+      "sodium": 720,
+      "potassium": 650,
+      "calcium": 45,
+      "iron": 1.5,
+      "vitaminA": 120,
+      "vitaminC": 8,
+      "vitaminD": 12,
+      "cholesterol": 85,
+      "omega3": 2.8
+    },
+    "tags": [
+      "С рыбой",
+      "Высокобелковое",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Филе лосося нарежьте на порционные куски, промокните бумажным полотенцем.",
+      "Приготовьте маринад: смешайте мед, соевый соус, тертый имбирь, измельченный чеснок и кунжутное масло.",
+      "Замаринуйте лосось в половине маринада на 15 минут.",
+      "Разогрейте сковороду с растительным маслом, обжарьте лосося по 3-4 минуты с каждой стороны.",
+      "Влейте оставшийся маринад в сковороду, готовьте 2-3 минуты до загустения соуса.",
+      "Посыпьте рыбу кунжутом и нарезанным зеленым луком.",
+      "Подавайте с рисом или овощами на пару, полив соусом из сковороды."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-7012-789012345679",
+    "title": "Овощное рагу с тофу",
+    "description": "Легкое овощное рагу с тофу в томатном соусе, идеальный ужин для вегетарианцев.",
+    "rating": 4.4,
+    "timeMinutes": 35,
+    "category": "Ужины",
+    "difficulty": "Легко",
+    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Тофу твердый"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кабачок"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Баклажан"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Помидоры"
+        },
+        "amount": 400.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 3.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Томатная паста"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Базилик свежий"
+        },
+        "amount": 10.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 220,
+      "protein": 15,
+      "fat": 12,
+      "fatSaturated": 2,
+      "carbohydrates": 18,
+      "sugar": 10,
+      "fiber": 7.5,
+      "sodium": 420,
+      "potassium": 850,
+      "calcium": 280,
+      "iron": 3.5,
+      "vitaminA": 850,
+      "vitaminC": 45,
+      "vitaminD": 0,
+      "cholesterol": 0,
+      "omega3": 0.8
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Низкокалорийное",
+      "Высокое железо",
+      "Безглютеновое"
+    ],
+    "steps": [
+      "Тофу нарежьте кубиками, обжарьте на оливковом масле до золотистой корочки.",
+      "Лук и чеснок мелко нарежьте, обжарьте до прозрачности.",
+      "Кабачок и баклажан нарежьте кубиками, добавьте к луку, обжаривайте 7-8 минут.",
+      "Помидоры ошпарьте кипятком, снимите кожицу, нарежьте кубиками.",
+      "Добавьте помидоры и томатную пасту к овощам, тушите 10 минут.",
+      "Добавьте тофу, тушите еще 5-7 минут.",
+      "Перед подачей посыпьте свежим базиликом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  }
+]

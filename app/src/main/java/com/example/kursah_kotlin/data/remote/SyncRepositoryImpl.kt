@@ -15,7 +15,7 @@ class SyncRepositoryImpl(
 
     override suspend fun syncRecipes() = withContext(Dispatchers.IO) {
         val remote = api.getRecipes()
-        val bundles = remote.map { it.toEntities() }
+        val bundles = remote.mapNotNull { it.toEntities() }
 
         // Наивная вставка: ингредиенты без дедупликации.
         // Для реального кейса нужна нормализация (find by name/remoteId).

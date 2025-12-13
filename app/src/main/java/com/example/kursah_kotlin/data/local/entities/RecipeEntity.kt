@@ -7,13 +7,15 @@ import androidx.room.PrimaryKey
 data class RecipeEntity(
     @PrimaryKey val id: String,
     val title: String,
+    val description: String?,
+    val rating: Double?,
     val timeMinutes: Int?,
-    val servings: Int?,
     val calories: Int?,
     val protein: Double?,
     val fat: Double?,
     val carbs: Double?,
-    val micronutrientsJson: String?, // для map<String,Double>
-    val isFavorite: Boolean = false
+    val micronutrientsJson: String?, // для map<String,Double> или других данных
+    val isFavorite: Boolean = false,
+    val isRecipeOfWeek: Boolean = false
 )
 

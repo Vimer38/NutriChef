@@ -37,6 +37,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,13 +45,34 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.kursah_kotlin.data.remote.dto.RecipeDto
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Slider
+import androidx.compose.material3.RangeSlider
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.SheetState
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.runtime.mutableStateListOf
+import java.io.IOException
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -63,18 +85,82 @@ fun HomeScreen(
     onSeeAllClick: (String) -> Unit = {},
     onNavigationClick: (String) -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     var searchText by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf("Все") }
     var showAllRecommendations by remember { mutableStateOf(false) }
     var showAllWeekly by remember { mutableStateOf(false) }
+    var isLoading by remember { mutableStateOf(true) }
+
+    var appliedTimeRange by remember { mutableStateOf(0f..120f) }
+    var appliedDifficulties by remember { mutableStateOf(emptyList<String>()) }
+    var appliedTags by remember { mutableStateOf(emptyList<String>()) }
+    var allRecipes by remember { mutableStateOf<List<RecipeCard>>(emptyList()) }
+
+    var showFilterSheet by remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState()
+    
+    if (showFilterSheet) {
+        FilterBottomSheet(
+            onDismissRequest = { showFilterSheet = false },
+            sheetState = sheetState,
+            initialTimeRange = appliedTimeRange,
+            initialDifficulties = appliedDifficulties,
+            initialTags = appliedTags,
+            onApply = { time, diffs, tags ->
+                appliedTimeRange = time
+                appliedDifficulties = diffs
+                appliedTags = tags
+                showFilterSheet = false
+            }
+        )
+    }
+
+    LaunchedEffect(Unit) {
+        val (cards, error) = loadRecipesFromAssets(context)
+        if (cards.isNotEmpty()) {
+            allRecipes = cards
+        }
+        isLoading = false
+        if (error != null) {
+            error.printStackTrace()
+        }
+    }
+
+    val filteredRecipes = remember(allRecipes, searchText, selectedCategory, appliedTimeRange, appliedDifficulties, appliedTags) {
+        allRecipes.filter { recipe ->
+            val matchesSearch = recipe.title.contains(searchText, ignoreCase = true)
+            val matchesCategory = selectedCategory == "Все" || recipe.category == selectedCategory
+            
+            val time = recipe.time?.replace(" мин", "")?.toIntOrNull() ?: 0
+            val matchesTime = time >= appliedTimeRange.start && time <= appliedTimeRange.endInclusive
+            
+            val matchesDifficulty = appliedDifficulties.isEmpty() || appliedDifficulties.contains(recipe.difficulty)
+            
+            // For tags, we check if the recipe has ANY of the selected tags (OR logic)
+            // Or ALL? Usually filters are AND. But let's assume if I select "Low Calorie" and "Vegetarian", I want recipes that are BOTH?
+            // Or maybe I want recipes that are EITHER?
+            // Let's go with: if tags are selected, recipe MUST have ALL selected tags.
+            // Wait, typically checkbox filters are OR within a group (e.g. Difficulty: Easy OR Medium)
+            // But for Tags it depends. Let's do OR for now implies "Show me recipes that match any of these traits"
+            // Actually, if I select "Vegetarian" and "Gluten Free", I probably want both.
+            // Let's stick to: matches ALL selected tags.
+            val recipeTags = recipe.diets // We mapped tags to 'diets' field in RecipeCard
+            val matchesTags = appliedTags.isEmpty() || appliedTags.all { it in recipeTags }
+
+            matchesSearch && matchesCategory && matchesTime && matchesDifficulty && matchesTags
+        }
+    }
+
+    val recommendations = remember(filteredRecipes) {
+         filteredRecipes.filter { !it.isRecipeOfWeek }.take(10)
+    }
+    val weeklyRecipes = remember(filteredRecipes) {
+        filteredRecipes.filter { it.isRecipeOfWeek }.take(10)
+    }
 
     val categories = listOf("Все", "Супы", "Горячее", "Десерты", "Завтраки", "Обеды")
-    val recommendations = List(10) { idx ->
-        RecipeCard("Название блюда ${idx + 1}", "Краткое описание", "30 мин")
-    }
-    val weeklyRecipes = List(10) { idx ->
-        RecipeCard("Название блюда ${idx + 1}", "Краткое описание", null)
-    }
 
     Scaffold(
         bottomBar = {
@@ -147,7 +233,8 @@ fun HomeScreen(
                 SearchBar(
                     value = searchText,
                     onValueChange = { searchText = it },
-                    onSearchClick = onSearchClick
+                    onSearchClick = onSearchClick,
+                    onFilterClick = { showFilterSheet = true }
                 )
             }
             item {
@@ -170,31 +257,45 @@ fun HomeScreen(
             item {
                 SectionHeader(
                     title = "Рекомендации",
+                    isExpanded = showAllRecommendations,
                     onSeeAllClick = {
-                        showAllRecommendations = true
+                        showAllRecommendations = !showAllRecommendations
                         onSeeAllClick("Рекомендации")
                     }
                 )
             }
-            if (showAllRecommendations) {
-                items(recommendations) { recipe ->
-                    RecipeCardItem(
-                        recipe = recipe,
-                        onClick = { onRecipeClick(recipe.title) }
+            if (isLoading) {
+                item {
+                    Text(
+                        text = "Загрузка рецептов...",
+                        style = TextStyle(
+                            fontFamily = PlayfairDisplayFontFamily,
+                            fontSize = 16.sp,
+                            color = Color.Gray
+                        )
                     )
-                    Spacer(modifier = Modifier.height(12.dp))
                 }
             } else {
-                item {
-                    LazyRow(
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        items(recommendations.take(5)) { recipe ->
-                            RecipeCardItem(
-                                recipe = recipe,
-                                onClick = { onRecipeClick(recipe.title) }
-                            )
+                if (showAllRecommendations) {
+                    items(recommendations) { recipe ->
+                        RecipeCardItem(
+                            recipe = recipe,
+                            onClick = { onRecipeClick(recipe.id) }
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                    }
+                } else {
+                    item {
+                        LazyRow(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            items(recommendations.take(5)) { recipe ->
+                                RecipeCardItem(
+                                    recipe = recipe,
+                                    onClick = { onRecipeClick(recipe.id) }
+                                )
+                            }
                         }
                     }
                 }
@@ -202,31 +303,34 @@ fun HomeScreen(
             item {
                 SectionHeader(
                     title = "Рецепты недели",
+                    isExpanded = showAllWeekly,
                     onSeeAllClick = {
-                        showAllWeekly = true
+                        showAllWeekly = !showAllWeekly
                         onSeeAllClick("Рецепты недели")
                     }
                 )
             }
-            if (showAllWeekly) {
-                items(weeklyRecipes) { recipe ->
-                    RecipeCardItem(
-                        recipe = recipe,
-                        onClick = { onRecipeClick(recipe.title) }
-                    )
-                    Spacer(modifier = Modifier.height(12.dp))
-                }
-            } else {
-                item {
-                    LazyRow(
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        items(weeklyRecipes.take(5)) { recipe ->
-                            RecipeCardItem(
-                                recipe = recipe,
-                                onClick = { onRecipeClick(recipe.title) }
-                            )
+            if (!isLoading) {
+                if (showAllWeekly) {
+                    items(weeklyRecipes) { recipe ->
+                        RecipeCardItem(
+                            recipe = recipe,
+                            onClick = { onRecipeClick(recipe.id) }
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                    }
+                } else {
+                    item {
+                        LazyRow(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            items(weeklyRecipes.take(5)) { recipe ->
+                                RecipeCardItem(
+                                    recipe = recipe,
+                                    onClick = { onRecipeClick(recipe.id) }
+                                )
+                            }
                         }
                     }
                 }
@@ -240,8 +344,11 @@ fun HomeScreen(
 fun SearchBar(
     value: String,
     onValueChange: (String) -> Unit,
-    onSearchClick: () -> Unit
+    onSearchClick: () -> Unit,
+    onFilterClick: () -> Unit
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     TextField(
         value = value,
         onValueChange = onValueChange,
@@ -258,16 +365,16 @@ fun SearchBar(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = "Search",
+                contentDescription = "Поиск",
                 tint = Color.Gray
             )
         },
         trailingIcon = {
             Icon(
                 imageVector = Icons.Outlined.FilterAlt,
-                contentDescription = "Filter",
+                contentDescription = "Фильтр",
                 tint = Color.Gray,
-                modifier = Modifier.clickable { onSearchClick() }
+                modifier = Modifier.clickable { onFilterClick() }
             )
         },
         colors = TextFieldDefaults.colors(
@@ -278,6 +385,13 @@ fun SearchBar(
         ),
         shape = RoundedCornerShape(30.dp),
         singleLine = true,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+        keyboardActions = KeyboardActions(
+            onSearch = {
+                keyboardController?.hide()
+                onSearchClick()
+            }
+        ),
         modifier = Modifier.fillMaxWidth(),
         textStyle = TextStyle(
             fontFamily = PlayfairDisplayFontFamily,
@@ -326,6 +440,7 @@ fun CategoryChip(
 @Composable
 fun SectionHeader(
     title: String,
+    isExpanded: Boolean = false,
     onSeeAllClick: () -> Unit
 ) {
     Row(
@@ -342,7 +457,7 @@ fun SectionHeader(
             )
         )
         Text(
-            text = "Смотреть все",
+            text = if (isExpanded) "Свернуть" else "Смотреть все",
             modifier = Modifier.clickable { onSeeAllClick() },
             style = TextStyle(
                 fontFamily = PlayfairDisplayFontFamily,
@@ -354,9 +469,16 @@ fun SectionHeader(
 }
 
 data class RecipeCard(
+    val id: String,
     val title: String,
     val description: String,
-    val time: String?
+    val time: String?,
+    val category: String? = null,
+    val diets: List<String> = emptyList(),
+    val difficulty: String? = null,
+    val imageUrl: String? = null,
+    val rating: Double? = null,
+    val isRecipeOfWeek: Boolean = false
 )
 
 @Composable
@@ -415,6 +537,59 @@ fun RecipeCardItem(
                 color = Color.Black
             )
         )
+        val meta = listOfNotNull(
+            recipe.category,
+            recipe.difficulty,
+            recipe.diets.takeIf { it.isNotEmpty() }?.joinToString(", ")
+        ).joinToString(" • ")
+        if (meta.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = meta,
+                style = TextStyle(
+                    fontFamily = PlayfairDisplayFontFamily,
+                    fontSize = 12.sp,
+                    color = Color.Gray
+                )
+            )
+        }
+    }
+}
+
+private suspend fun loadRecipesFromAssets(
+    context: android.content.Context
+): Pair<List<RecipeCard>, Exception?> {
+    return try {
+        val jsonString = withContext(Dispatchers.IO) {
+            context.assets.open("recipes.json")
+                .bufferedReader()
+                .use { it.readText() }
+        }
+        if (jsonString.isEmpty()) {
+            return Pair(emptyList(), IOException("recipes.json пустой"))
+        }
+        val type = object : TypeToken<List<RecipeDto>>() {}.type
+        val recipes = Gson().fromJson<List<RecipeDto>>(jsonString, type) ?: emptyList()
+        val cards = recipes.mapNotNull { dto ->
+            val id = dto.id ?: return@mapNotNull null
+            val title = dto.title ?: return@mapNotNull null
+            RecipeCard(
+                id = id,
+                title = title,
+                description = dto.description ?: dto.nutrients?.calories?.let { "$it ккал" } ?: "Рецепт",
+                time = dto.timeMinutes?.let { "$it мин" },
+                category = dto.category,
+                // Используем tags вместо diets
+                diets = dto.tags, 
+                difficulty = dto.difficulty,
+                imageUrl = dto.imageUrl,
+                rating = dto.rating,
+                isRecipeOfWeek = dto.isRecipeOfWeek
+            )
+        }
+        Pair(cards, null)
+    } catch (e: Exception) {
+        Pair(emptyList(), e)
     }
 }
 
@@ -494,3 +669,141 @@ fun NavigationIcon(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FilterBottomSheet(
+    onDismissRequest: () -> Unit,
+    sheetState: SheetState,
+    initialTimeRange: ClosedFloatingPointRange<Float>,
+    initialDifficulties: List<String>,
+    initialTags: List<String>,
+    onApply: (ClosedFloatingPointRange<Float>, List<String>, List<String>) -> Unit
+) {
+    var timeRange by remember { mutableStateOf(initialTimeRange) }
+    val selectedDifficulties = remember { mutableStateListOf<String>().apply { addAll(initialDifficulties) } }
+    val selectedTags = remember { mutableStateListOf<String>().apply { addAll(initialTags) } }
+    
+    ModalBottomSheet(
+        onDismissRequest = onDismissRequest,
+        sheetState = sheetState,
+        containerColor = Color.White
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
+        ) {
+            Text(
+                text = "Фильтры",
+                style = TextStyle(
+                    fontFamily = PlayfairDisplayFontFamily,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+            )
+            
+            // Time Filter
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Время приготовления: ${timeRange.start.toInt()} - ${timeRange.endInclusive.toInt()} мин",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                RangeSlider(
+                    value = timeRange,
+                    onValueChange = { timeRange = it },
+                    valueRange = 0f..120f,
+                    steps = 11
+                )
+            }
+
+            // Difficulty Filter
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Сложность",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    listOf("Легко", "Средне", "Сложно").forEach { difficulty ->
+                        FilterChip(
+                            selected = selectedDifficulties.contains(difficulty),
+                            onClick = {
+                                if (selectedDifficulties.contains(difficulty)) {
+                                    selectedDifficulties.remove(difficulty)
+                                } else {
+                                    selectedDifficulties.add(difficulty)
+                                }
+                            },
+                            label = { Text(difficulty) }
+                        )
+                    }
+                }
+            }
+
+            // Tags Filter
+            val tags = listOf(
+                "Низкокалорийное", "Высокобелковое", "Высокое железо", 
+                "Вегетарианское", "Без мяса", "С мясом", "С рыбой", 
+                "Безглютеновое"
+            )
+            
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Теги",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    tags.forEach { tag ->
+                        FilterChip(
+                            selected = selectedTags.contains(tag),
+                            onClick = {
+                                if (selectedTags.contains(tag)) {
+                                    selectedTags.remove(tag)
+                                } else {
+                                    selectedTags.add(tag)
+                                }
+                            },
+                            label = { Text(tag) }
+                        )
+                    }
+                }
+            }
+            
+            Button(
+                onClick = { onApply(timeRange, selectedDifficulties, selectedTags) },
+                modifier = Modifier.fillMaxWidth().height(50.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(28, 28, 28)
+                ),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(
+                    text = "Применить",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        color = Color.White
+                    )
+                )
+            }
+            Spacer(modifier = Modifier.height(32.dp))
+        }
+    }
+}

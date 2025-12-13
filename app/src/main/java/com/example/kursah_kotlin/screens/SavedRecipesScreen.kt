@@ -65,10 +65,10 @@ fun SavedRecipesScreen(
 
     val categories = listOf(
         "Салаты" to listOf(
-            RecipeCard("Название блюда", "Краткое описание", null),
-            RecipeCard("Название блюда", "Краткое описание", null),
-            RecipeCard("Название блюда", "Краткое описание", null),
-            RecipeCard("Название блюда", "Краткое описание", null)
+            RecipeCard(id = "salad-1", title = "Название блюда", description = "Краткое описание", time = null),
+            RecipeCard(id = "salad-2", title = "Название блюда", description = "Краткое описание", time = null),
+            RecipeCard(id = "salad-3", title = "Название блюда", description = "Краткое описание", time = null),
+            RecipeCard(id = "salad-4", title = "Название блюда", description = "Краткое описание", time = null)
         ),
         "Завтраки" to emptyList(),
         "Супы" to emptyList(),
@@ -89,7 +89,7 @@ fun SavedRecipesScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Outlined.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = "Назад",
                             modifier = Modifier.size(24.dp),
                             tint = Color.Black
                         )
@@ -207,7 +207,7 @@ fun CategorySection(
                         pair.forEach { recipe ->
                             SavedRecipeCardItem(
                                 recipe = recipe,
-                                onClick = { onRecipeClick(recipe.title) },
+                                onClick = { onRecipeClick(recipe.id) },
                             )
                         }
                         if (pair.size == 1) {
@@ -293,7 +293,7 @@ fun SavedRecipeCardItem(
         ) {
             Icon(
                 imageVector = Icons.Outlined.Bookmark,
-                contentDescription = "Bookmarked",
+                contentDescription = "В закладках",
                 modifier = Modifier
                     .padding(12.dp)
                     .size(20.dp),

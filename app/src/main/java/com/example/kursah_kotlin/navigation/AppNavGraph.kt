@@ -108,7 +108,8 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
         ) {
             RecipeDetailScreen(
                 onBackClick = { navController.popBackStack() },
-                onNavigationClick = { handleBottomNav(it, navController) }
+                onNavigationClick = { handleBottomNav(it, navController) },
+                recipeId = it.arguments?.getString("recipeId") ?: ""
             )
         }
     }

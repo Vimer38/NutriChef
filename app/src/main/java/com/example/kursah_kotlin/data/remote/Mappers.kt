@@ -15,35 +15,42 @@ data class RecipeEntitiesBundle(
 
 private val gson = Gson()
 
-fun RecipeDto.toEntities(): RecipeEntitiesBundle {
-    val ingredientsEntities = ingredients.map {
+fun RecipeDto.toEntities(): RecipeEntitiesBundle? {
+    val nonNullId = id ?: return null
+    val nonNullTitle = title ?: return null
+
+    val validIngredients = ingredients.filter { it.ingredient?.name != null }
+
+    val ingredientsEntities = validIngredients.map {
         IngredientEntity(
             localId = 0,
-            remoteId = it.ingredient.id,
-            name = it.ingredient.name
+            remoteId = it.ingredient?.id,
+            name = it.ingredient?.name ?: "" // Should not happen due to filter
         )
     }
 
-    val crossRefs = ingredients.mapIndexed { index, amountDto ->
+    val crossRefs = validIngredients.mapIndexed { index, amountDto ->
         RecipeIngredientCrossRef(
-            recipeId = id,
-            ingredientLocalId = index.toLong(), // реальный id будет после вставки; для упрощения вставляем заглушку
+            recipeId = nonNullId,
+            ingredientLocalId = index.toLong(),
             amount = amountDto.amount,
             unit = amountDto.unit
         )
     }
 
     val recipeEntity = RecipeEntity(
-        id = id,
-        title = title,
+        id = nonNullId,
+        title = nonNullTitle,
+        description = description,
+        rating = rating,
         timeMinutes = timeMinutes,
-        servings = servings,
-        calories = nutrients.calories,
-        protein = nutrients.protein,
-        fat = nutrients.fat,
-        carbs = nutrients.carbs,
-        micronutrientsJson = nutrients.micronutrients?.let { gson.toJson(it) },
-        isFavorite = isFavorite
+        calories = nutrients?.calories,
+        protein = nutrients?.protein,
+        fat = nutrients?.fat,
+        carbs = nutrients?.carbs,
+        micronutrientsJson = null,
+        isFavorite = isFavorite,
+        isRecipeOfWeek = isRecipeOfWeek
     )
 
     return RecipeEntitiesBundle(

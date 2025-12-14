@@ -96,6 +96,10 @@ fun HomeScreen(
     var appliedTimeRange by remember { mutableStateOf(0f..120f) }
     var appliedDifficulties by remember { mutableStateOf(emptyList<String>()) }
     var appliedTags by remember { mutableStateOf(emptyList<String>()) }
+    var appliedCaloriesRange by remember { mutableStateOf(0f..1000f) }
+    var appliedProteinRange by remember { mutableStateOf(0f..100f) }
+    var appliedFatRange by remember { mutableStateOf(0f..100f) }
+    var appliedCarbsRange by remember { mutableStateOf(0f..200f) }
     var allRecipes by remember { mutableStateOf<List<RecipeCard>>(emptyList()) }
 
     var showFilterSheet by remember { mutableStateOf(false) }
@@ -108,10 +112,18 @@ fun HomeScreen(
             initialTimeRange = appliedTimeRange,
             initialDifficulties = appliedDifficulties,
             initialTags = appliedTags,
-            onApply = { time, diffs, tags ->
+            initialCaloriesRange = appliedCaloriesRange,
+            initialProteinRange = appliedProteinRange,
+            initialFatRange = appliedFatRange,
+            initialCarbsRange = appliedCarbsRange,
+            onApply = { time, diffs, tags, calories, protein, fat, carbs ->
                 appliedTimeRange = time
                 appliedDifficulties = diffs
                 appliedTags = tags
+                appliedCaloriesRange = calories
+                appliedProteinRange = protein
+                appliedFatRange = fat
+                appliedCarbsRange = carbs
                 showFilterSheet = false
             }
         )
@@ -128,7 +140,7 @@ fun HomeScreen(
         }
     }
 
-    val filteredRecipes = remember(allRecipes, searchText, selectedCategory, appliedTimeRange, appliedDifficulties, appliedTags) {
+    val filteredRecipes = remember(allRecipes, searchText, selectedCategory, appliedTimeRange, appliedDifficulties, appliedTags, appliedCaloriesRange, appliedProteinRange, appliedFatRange, appliedCarbsRange) {
         allRecipes.filter { recipe ->
             val matchesSearch = recipe.title.contains(searchText, ignoreCase = true)
             val matchesCategory = selectedCategory == "Все" || recipe.category == selectedCategory
@@ -149,7 +161,21 @@ fun HomeScreen(
             val recipeTags = recipe.diets // We mapped tags to 'diets' field in RecipeCard
             val matchesTags = appliedTags.isEmpty() || appliedTags.all { it in recipeTags }
 
-            matchesSearch && matchesCategory && matchesTime && matchesDifficulty && matchesTags
+            // Nutrient filters
+            val matchesCalories = recipe.calories?.let { 
+                it >= appliedCaloriesRange.start && it <= appliedCaloriesRange.endInclusive 
+            } ?: true
+            val matchesProtein = recipe.protein?.let { 
+                it >= appliedProteinRange.start && it <= appliedProteinRange.endInclusive 
+            } ?: true
+            val matchesFat = recipe.fat?.let { 
+                it >= appliedFatRange.start && it <= appliedFatRange.endInclusive 
+            } ?: true
+            val matchesCarbs = recipe.carbs?.let { 
+                it >= appliedCarbsRange.start && it <= appliedCarbsRange.endInclusive 
+            } ?: true
+
+            matchesSearch && matchesCategory && matchesTime && matchesDifficulty && matchesTags && matchesCalories && matchesProtein && matchesFat && matchesCarbs
         }
     }
 
@@ -478,7 +504,11 @@ data class RecipeCard(
     val difficulty: String? = null,
     val imageUrl: String? = null,
     val rating: Double? = null,
-    val isRecipeOfWeek: Boolean = false
+    val isRecipeOfWeek: Boolean = false,
+    val calories: Int? = null,
+    val protein: Double? = null,
+    val fat: Double? = null,
+    val carbs: Double? = null
 )
 
 @Composable
@@ -584,7 +614,11 @@ private suspend fun loadRecipesFromAssets(
                 difficulty = dto.difficulty,
                 imageUrl = dto.imageUrl,
                 rating = dto.rating,
-                isRecipeOfWeek = dto.isRecipeOfWeek
+                isRecipeOfWeek = dto.isRecipeOfWeek,
+                calories = dto.nutrients?.calories,
+                protein = dto.nutrients?.protein,
+                fat = dto.nutrients?.fat,
+                carbs = dto.nutrients?.carbs
             )
         }
         Pair(cards, null)
@@ -677,11 +711,19 @@ fun FilterBottomSheet(
     initialTimeRange: ClosedFloatingPointRange<Float>,
     initialDifficulties: List<String>,
     initialTags: List<String>,
-    onApply: (ClosedFloatingPointRange<Float>, List<String>, List<String>) -> Unit
+    initialCaloriesRange: ClosedFloatingPointRange<Float>,
+    initialProteinRange: ClosedFloatingPointRange<Float>,
+    initialFatRange: ClosedFloatingPointRange<Float>,
+    initialCarbsRange: ClosedFloatingPointRange<Float>,
+    onApply: (ClosedFloatingPointRange<Float>, List<String>, List<String>, ClosedFloatingPointRange<Float>, ClosedFloatingPointRange<Float>, ClosedFloatingPointRange<Float>, ClosedFloatingPointRange<Float>) -> Unit
 ) {
     var timeRange by remember { mutableStateOf(initialTimeRange) }
     val selectedDifficulties = remember { mutableStateListOf<String>().apply { addAll(initialDifficulties) } }
     val selectedTags = remember { mutableStateListOf<String>().apply { addAll(initialTags) } }
+    var caloriesRange by remember { mutableStateOf(initialCaloriesRange) }
+    var proteinRange by remember { mutableStateOf(initialProteinRange) }
+    var fatRange by remember { mutableStateOf(initialFatRange) }
+    var carbsRange by remember { mutableStateOf(initialCarbsRange) }
     
     ModalBottomSheet(
         onDismissRequest = onDismissRequest,
@@ -749,6 +791,75 @@ fun FilterBottomSheet(
                 }
             }
 
+            // Nutrient Filters (NEW)
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Калории: ${caloriesRange.start.toInt()} - ${caloriesRange.endInclusive.toInt()} ккал",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                RangeSlider(
+                    value = caloriesRange,
+                    onValueChange = { caloriesRange = it },
+                    valueRange = 0f..1000f,
+                    steps = 19
+                )
+            }
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Белки: ${proteinRange.start.toInt()} - ${proteinRange.endInclusive.toInt()} г",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                RangeSlider(
+                    value = proteinRange,
+                    onValueChange = { proteinRange = it },
+                    valueRange = 0f..100f,
+                    steps = 19
+                )
+            }
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Жиры: ${fatRange.start.toInt()} - ${fatRange.endInclusive.toInt()} г",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                RangeSlider(
+                    value = fatRange,
+                    onValueChange = { fatRange = it },
+                    valueRange = 0f..100f,
+                    steps = 19
+                )
+            }
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Углеводы: ${carbsRange.start.toInt()} - ${carbsRange.endInclusive.toInt()} г",
+                    style = TextStyle(
+                        fontFamily = PlayfairDisplayFontFamily,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                RangeSlider(
+                    value = carbsRange,
+                    onValueChange = { carbsRange = it },
+                    valueRange = 0f..200f,
+                    steps = 19
+                )
+            }
+
             // Tags Filter
             val tags = listOf(
                 "Низкокалорийное", "Высокобелковое", "Высокое железо", 
@@ -787,7 +898,7 @@ fun FilterBottomSheet(
             }
             
             Button(
-                onClick = { onApply(timeRange, selectedDifficulties, selectedTags) },
+                onClick = { onApply(timeRange, selectedDifficulties, selectedTags, caloriesRange, proteinRange, fatRange, carbsRange) },
                 modifier = Modifier.fillMaxWidth().height(50.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(28, 28, 28)

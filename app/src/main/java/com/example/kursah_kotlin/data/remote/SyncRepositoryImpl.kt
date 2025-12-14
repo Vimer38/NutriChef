@@ -17,10 +17,23 @@ class SyncRepositoryImpl(
         val remote = api.getRecipes()
         val bundles = remote.mapNotNull { it.toEntities() }
 
+        // Сохраняем текущие избранные рецепты перед синхронизацией
+        val currentFavorites = recipeDao.getFavorites()
+        val favoriteIds = currentFavorites.map { it.id }.toSet()
+
         // Наивная вставка: ингредиенты без дедупликации.
         // Для реального кейса нужна нормализация (find by name/remoteId).
         val ingredients: List<IngredientEntity> = bundles.flatMap { it.ingredients }
-        val recipes = bundles.map { it.recipe }
+        
+        // Восстанавливаем флаг isFavorite для рецептов, которые были в избранном
+        val recipes = bundles.map { bundle ->
+            if (favoriteIds.contains(bundle.recipe.id)) {
+                bundle.recipe.copy(isFavorite = true)
+            } else {
+                bundle.recipe
+            }
+        }
+        
         val crossRefs = bundles.flatMap { it.crossRefs }
 
         ingredientDao.upsertAll(ingredients)

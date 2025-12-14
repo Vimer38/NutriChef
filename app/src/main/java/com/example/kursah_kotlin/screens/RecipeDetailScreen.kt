@@ -34,6 +34,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,7 +52,9 @@ import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 @Preview
 @Composable
@@ -63,10 +66,22 @@ fun RecipeDetailScreen(
 ) {
     val context = LocalContext.current
     var recipe by remember { mutableStateOf<RecipeDto?>(null) }
+    var isFavorite by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+
 
     LaunchedEffect(recipeId) {
         val found = loadRecipeById(context, recipeId)
         recipe = found
+        
+        // Загружаем состояние избранного из базы данных
+        if (recipeId.isNotBlank()) {
+            withContext(Dispatchers.IO) {
+                val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
+                val recipeEntity = db.recipeDao().getRecipeById(recipeId)
+                isFavorite = recipeEntity?.isFavorite ?: false
+            }
+        }
     }
 
     val title = recipe?.title ?: "Рецепт"
@@ -214,14 +229,24 @@ fun RecipeDetailScreen(
                     .background(Color(220, 220, 220), RoundedCornerShape(12.dp))
             ) {
                 Icon(
-                    imageVector = Icons.Default.BookmarkBorder,
-                    contentDescription = "Закладка",
+                    imageVector = if (isFavorite) Icons.Outlined.Bookmark else Icons.Default.BookmarkBorder,
+                    contentDescription = if (isFavorite) "Убрать из избранного" else "Добавить в избранное",
                     tint = Color.Black,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .padding(12.dp)
                         .size(24.dp)
-                        .clickable { onBookmarkClick() }
+                        .clickable {
+                            coroutineScope.launch(Dispatchers.IO) {
+                                val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
+                                val newFavoriteState = !isFavorite
+                                db.recipeDao().setFavorite(recipeId, newFavoriteState)
+                                withContext(Dispatchers.Main) {
+                                    isFavorite = newFavoriteState
+                                }
+                            }
+                            onBookmarkClick()
+                        }
                 )
 
             }

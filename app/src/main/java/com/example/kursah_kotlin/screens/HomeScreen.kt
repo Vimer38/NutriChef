@@ -809,6 +809,7 @@ fun FilterBottomSheet(
                 )
             }
 
+            /*
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
                     text = "Белки: ${proteinRange.start.toInt()} - ${proteinRange.endInclusive.toInt()} г",
@@ -859,6 +860,7 @@ fun FilterBottomSheet(
                     steps = 19
                 )
             }
+             */
 
             // Tags Filter
             val tags = listOf(

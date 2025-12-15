@@ -356,7 +356,8 @@ fun SectionHeader(
 data class RecipeCard(
     val title: String,
     val description: String,
-    val time: String?
+    val time: String?,
+    val imageUrl: String? = null
 )
 
 @Composable

@@ -35,12 +35,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -48,7 +51,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
+import com.example.kursah_kotlin.data.remote.NetworkModule
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -63,18 +71,51 @@ fun SavedRecipesScreen(
         mutableStateOf(setOf("Салаты"))
     }
 
-    val categories = listOf(
-        "Салаты" to listOf(
-            RecipeCard("Название блюда", "Краткое описание", null),
-            RecipeCard("Название блюда", "Краткое описание", null),
-            RecipeCard("Название блюда", "Краткое описание", null),
-            RecipeCard("Название блюда", "Краткое описание", null)
-        ),
-        "Завтраки" to emptyList(),
-        "Супы" to emptyList(),
-        "Обеды" to emptyList(),
-        "Десерты" to emptyList()
+    // Категории: название на экране -> категория TheMealDB
+    val mealDbCategories = listOf(
+        "Салаты" to "Seafood",
+        "Завтраки" to "Breakfast",
+        "Супы" to "Side",
+        "Обеды" to "Beef",
+        "Десерты" to "Dessert"
     )
+
+    val api = remember {
+        NetworkModule.provideApiService(
+            NetworkModule.provideRetrofit(NetworkModule.provideOkHttp())
+        )
+    }
+
+    var recipesByCategory by remember {
+        mutableStateOf<Map<String, List<RecipeCard>>>(emptyMap())
+    }
+
+    val errorHandler = remember {
+        CoroutineExceptionHandler { _, _ -> }
+    }
+
+    val scope = rememberCoroutineScope()
+
+    // Подтягиваем по 4 рецепта на категорию из TheMealDB
+    LaunchedEffect(Unit) {
+        mealDbCategories.forEach { (title, apiCategory) ->
+            scope.launch(errorHandler) {
+                val remote = api.getMealsByCategory(apiCategory)
+                val cards = remote.meals.orEmpty().take(4).map {
+                    RecipeCard(
+                        title = it.strMeal,
+                        description = apiCategory,
+                        time = null
+                    )
+                }
+                recipesByCategory = recipesByCategory + (title to cards)
+            }
+        }
+    }
+
+    val categories = mealDbCategories.map { (title, _) ->
+        title to (recipesByCategory[title] ?: emptyList())
+    }
 
     Scaffold(
         topBar = {
@@ -208,6 +249,7 @@ fun CategorySection(
                             SavedRecipeCardItem(
                                 recipe = recipe,
                                 onClick = { onRecipeClick(recipe.title) },
+                                modifier = Modifier.weight(1f)
                             )
                         }
                         if (pair.size == 1) {
@@ -278,10 +320,11 @@ fun SimpleWhiteFade() {
 @Composable
 fun SavedRecipeCardItem(
     recipe: RecipeCard,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .size(width = 180.dp, height = 240.dp)
             .clickable { onClick() }
     ) {
@@ -291,6 +334,17 @@ fun SavedRecipeCardItem(
                 .height(140.dp)
                 .background(Color(238, 238, 238), RoundedCornerShape(12.dp))
         ) {
+            if (recipe.imageUrl != null) {
+                AsyncImage(
+                    model = recipe.imageUrl,
+                    contentDescription = recipe.title,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(140.dp)
+                        .clip(RoundedCornerShape(12.dp)),
+                    contentScale = ContentScale.Crop
+                )
+            }
             Icon(
                 imageVector = Icons.Outlined.Bookmark,
                 contentDescription = "Bookmarked",

@@ -14,7 +14,7 @@ data class RecipeEntity(
     val protein: Double?,
     val fat: Double?,
     val carbs: Double?,
-    val micronutrientsJson: String?, // для map<String,Double> или других данных
+    val micronutrientsJson: String?,
     val isFavorite: Boolean = false,
     val isRecipeOfWeek: Boolean = false
 )

@@ -1,6 +1,7 @@
 package com.example.kursah_kotlin.screens
 
 import android.content.Context
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -38,8 +39,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
@@ -47,7 +48,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
+import androidx.compose.ui.layout.ContentScale
 import com.example.kursah_kotlin.data.remote.dto.RecipeDto
+import com.example.kursah_kotlin.data.remote.toEntities
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -74,7 +78,6 @@ fun RecipeDetailScreen(
         val found = loadRecipeById(context, recipeId)
         recipe = found
         
-        // Загружаем состояние избранного из базы данных
         if (recipeId.isNotBlank()) {
             withContext(Dispatchers.IO) {
                 val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
@@ -93,6 +96,7 @@ fun RecipeDetailScreen(
     val ingredients = recipe?.ingredients ?: emptyList()
     val steps = recipe?.steps ?: emptyList()
     val ratingValue = recipe?.rating ?: 0.0
+    val imageUrl = recipe?.imageUrl
 
     var isIngredientsExpanded by remember { mutableStateOf(true) }
     var isStepsExpanded by remember { mutableStateOf(true) }
@@ -228,6 +232,17 @@ fun RecipeDetailScreen(
                     .height(300.dp)
                     .background(Color(220, 220, 220), RoundedCornerShape(12.dp))
             ) {
+                if (!imageUrl.isNullOrBlank()) {
+                    Image(
+                        painter = rememberAsyncImagePainter(model = imageUrl),
+                        contentDescription = title,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(0.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
                 Icon(
                     imageVector = if (isFavorite) Icons.Outlined.Bookmark else Icons.Default.BookmarkBorder,
                     contentDescription = if (isFavorite) "Убрать из избранного" else "Добавить в избранное",
@@ -237,15 +252,34 @@ fun RecipeDetailScreen(
                         .padding(12.dp)
                         .size(24.dp)
                         .clickable {
-                            coroutineScope.launch(Dispatchers.IO) {
-                                val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
-                                val newFavoriteState = !isFavorite
-                                db.recipeDao().setFavorite(recipeId, newFavoriteState)
-                                withContext(Dispatchers.Main) {
-                                    isFavorite = newFavoriteState
+                            if (recipeId.isNotBlank()) {
+                                coroutineScope.launch(Dispatchers.IO) {
+                                    val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
+                                    val recipeDao = db.recipeDao()
+
+                                    val newFavoriteState = !isFavorite
+
+                                    val existing = recipeDao.getRecipeById(recipeId)
+                                    if (existing == null && recipe != null) {
+                                        val bundle = recipe!!.toEntities()
+                                        bundle?.let { b ->
+                                            val entityWithFavorite = b.recipe.copy(isFavorite = newFavoriteState)
+                                            recipeDao.upsertRecipes(listOf(entityWithFavorite))
+                                        }
+                                    } else if (existing != null && existing.isFavorite != newFavoriteState) {
+                                        recipeDao.upsertRecipes(
+                                            listOf(existing.copy(isFavorite = newFavoriteState))
+                                        )
+                                    } else {
+                                        recipeDao.setFavorite(recipeId, newFavoriteState)
+                                    }
+
+                                    withContext(Dispatchers.Main) {
+                                        isFavorite = newFavoriteState
+                                        onBookmarkClick()
+                                    }
                                 }
                             }
-                            onBookmarkClick()
                         }
                 )
 

@@ -20,7 +20,6 @@ class UserRepositoryImpl(
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
             val user = result.user
             if (user != null) {
-                // Загружаем данные пользователя из локальной БД
                 loadUserFromLocalDb(user.uid)
                 Result.success(user)
             } else {
@@ -36,7 +35,6 @@ class UserRepositoryImpl(
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             val user = result.user
             if (user != null) {
-                // Создаем запись пользователя в локальной БД
                 val userEntity = UserEntity(
                     userId = user.uid,
                     email = email
@@ -103,10 +101,8 @@ class UserRepositoryImpl(
     }
 
     private suspend fun loadUserFromLocalDb(userId: String) {
-        // Данные уже должны быть в БД, просто проверяем наличие
         val user = userDao.getUserById(userId)
         if (user == null) {
-            // Если пользователя нет в БД, создаем базовую запись
             val currentUser = getCurrentUser()
             if (currentUser != null) {
                 val userEntity = UserEntity(

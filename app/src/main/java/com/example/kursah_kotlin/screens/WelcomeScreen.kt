@@ -58,7 +58,6 @@ fun WelcomeScreen(
     val userRepository = remember { UserRepositoryImpl(database) }
     val currentUser = remember { FirebaseAuth.getInstance().currentUser }
     
-    // Состояние для отслеживания выбранной кнопки
     val selectedButton = remember { mutableStateOf<String?>(null) }
     
     val saveGoal: (String) -> Unit = { goal ->

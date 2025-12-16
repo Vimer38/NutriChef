@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
 data class UserEntity(
-    @PrimaryKey val userId: String, // Firebase UID
+    @PrimaryKey val userId: String,
     val email: String,
     val firstName: String? = null,
     val lastName: String? = null,

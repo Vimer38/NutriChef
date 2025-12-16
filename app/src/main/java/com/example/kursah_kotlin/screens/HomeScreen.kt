@@ -1,6 +1,8 @@
 package com.example.kursah_kotlin.screens
 
 import android.graphics.Paint
+import android.net.Uri
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -46,33 +48,37 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
+import com.example.kursah_kotlin.data.local.DatabaseProvider
 import com.example.kursah_kotlin.data.remote.dto.RecipeDto
+import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Slider
-import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.SheetState
+import androidx.compose.material3.Slider
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.runtime.mutableStateListOf
-import com.example.kursah_kotlin.data.local.UserPreferences
+import androidx.compose.ui.draw.clip
 import java.io.IOException
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -88,13 +94,12 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
 
-    val userPreferences = remember { UserPreferences(context) }
+    val database = remember { DatabaseProvider.getDatabase(context) }
+    val userRepository = remember { UserRepositoryImpl(database) }
+    val currentUser = remember { FirebaseAuth.getInstance().currentUser }
 
     var firstName by remember { mutableStateOf<String?>(null) }
-
-    LaunchedEffect(Unit) {
-        firstName = userPreferences.getFirstName()
-    }
+    var photoPath by remember { mutableStateOf<String?>(null) }
 
     var searchText by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf("Все") }
@@ -138,7 +143,16 @@ fun HomeScreen(
         )
     }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(currentUser?.uid) {
+        currentUser?.let { user ->
+            val profile = userRepository.getUserProfile(user.uid)
+            firstName = profile?.firstName ?: userName
+            photoPath = profile?.photoPath
+        } ?: run {
+            firstName = userName
+            photoPath = null
+        }
+
         val (cards, error) = loadRecipesFromAssets(context)
         if (cards.isNotEmpty()) {
             allRecipes = cards
@@ -159,19 +173,10 @@ fun HomeScreen(
             
             val matchesDifficulty = appliedDifficulties.isEmpty() || appliedDifficulties.contains(recipe.difficulty)
             
-            // For tags, we check if the recipe has ANY of the selected tags (OR logic)
-            // Or ALL? Usually filters are AND. But let's assume if I select "Low Calorie" and "Vegetarian", I want recipes that are BOTH?
-            // Or maybe I want recipes that are EITHER?
-            // Let's go with: if tags are selected, recipe MUST have ALL selected tags.
-            // Wait, typically checkbox filters are OR within a group (e.g. Difficulty: Easy OR Medium)
-            // But for Tags it depends. Let's do OR for now implies "Show me recipes that match any of these traits"
-            // Actually, if I select "Vegetarian" and "Gluten Free", I probably want both.
-            // Let's stick to: matches ALL selected tags.
-            val recipeTags = recipe.diets // We mapped tags to 'diets' field in RecipeCard
+            val recipeTags = recipe.diets
             val matchesTags = appliedTags.isEmpty() || appliedTags.all { it in recipeTags }
 
-            // Nutrient filters
-            val matchesCalories = recipe.calories?.let { 
+            val matchesCalories = recipe.calories?.let {
                 it >= appliedCaloriesRange.start && it <= appliedCaloriesRange.endInclusive 
             } ?: true
             val matchesProtein = recipe.protein?.let { 
@@ -223,8 +228,19 @@ fun HomeScreen(
                     Box(
                         modifier = Modifier
                             .size(48.dp)
-                            .background(Color(238, 238, 238), CircleShape)
-                    )
+                            .background(Color(238, 238, 238), CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        if (!photoPath.isNullOrBlank()) {
+                            Image(
+                                painter = rememberAsyncImagePainter(model = Uri.parse(photoPath!!)),
+                                contentDescription = "Аватар",
+                                modifier = Modifier
+                                    .size(44.dp)
+                                    .clip(CircleShape)
+                            )
+                        }
+                    }
                     Column {
                         Text(
                             text = "Доброе утро",
@@ -536,6 +552,17 @@ fun RecipeCardItem(
                 .height(180.dp)
                 .background(Color(238, 238, 238), RoundedCornerShape(12.dp))
         ) {
+            if (!recipe.imageUrl.isNullOrBlank()) {
+                Image(
+                    painter = rememberAsyncImagePainter(model = recipe.imageUrl),
+                    contentDescription = recipe.title,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(12.dp)),
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                )
+            }
+
             if (recipe.time != null) {
                 Box(
                     modifier = Modifier
@@ -618,8 +645,7 @@ private suspend fun loadRecipesFromAssets(
                 description = dto.description ?: dto.nutrients?.calories?.let { "$it ккал" } ?: "Рецепт",
                 time = dto.timeMinutes?.let { "$it мин" },
                 category = dto.category,
-                // Используем tags вместо diets
-                diets = dto.tags, 
+                diets = dto.tags,
                 difficulty = dto.difficulty,
                 imageUrl = dto.imageUrl,
                 rating = dto.rating,
@@ -755,7 +781,6 @@ fun FilterBottomSheet(
                 )
             )
             
-            // Time Filter
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
                     text = "Время приготовления: ${timeRange.start.toInt()} - ${timeRange.endInclusive.toInt()} мин",
@@ -773,7 +798,6 @@ fun FilterBottomSheet(
                 )
             }
 
-            // Difficulty Filter
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
                     text = "Сложность",
@@ -800,7 +824,6 @@ fun FilterBottomSheet(
                 }
             }
 
-            // Nutrient Filters (NEW)
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
                     text = "Калории: ${caloriesRange.start.toInt()} - ${caloriesRange.endInclusive.toInt()} ккал",
@@ -871,7 +894,6 @@ fun FilterBottomSheet(
             }
              */
 
-            // Tags Filter
             val tags = listOf(
                 "Низкокалорийное", "Высокобелковое", "Высокое железо", 
                 "Вегетарианское", "Без мяса", "С мясом", "С рыбой", 

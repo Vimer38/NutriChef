@@ -40,6 +40,12 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
                     navController.navigate(Destinations.Welcome) {
                         launchSingleTop = true
                     }
+                },
+                onAlreadyAuthenticated = {
+                    navController.navigate(Destinations.Home) {
+                        popUpTo(Destinations.Auth) { inclusive = true }
+                        launchSingleTop = true
+                    }
                 }
             )
         }
@@ -102,7 +108,13 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
         composable(Destinations.Profile) {
             ProfileScreen(
                 onBackClick = { navController.popBackStack() },
-                onNavigationClick = { handleBottomNav(it, navController) }
+                onNavigationClick = { handleBottomNav(it, navController) },
+                onLogoutClick = {
+                    navController.navigate(Destinations.Auth) {
+                        popUpTo(Destinations.Home) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                }
             )
         }
 

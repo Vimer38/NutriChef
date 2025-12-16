@@ -1,5 +1,7 @@
 package com.example.kursah_kotlin.screens
 
+import android.net.Uri
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -42,12 +44,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -65,23 +69,19 @@ fun SavedRecipesScreen(
     var categories by remember { mutableStateOf<List<Pair<String, List<RecipeCard>>>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
 
-    // Загружаем избранные рецепты из базы данных
     androidx.compose.runtime.LaunchedEffect(Unit) {
         kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
             try {
                 val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
                 val favoriteEntities = db.recipeDao().getFavorites()
                 
-                // Загружаем полные данные рецептов из JSON
                 val jsonString = context.assets.open("recipes.json").bufferedReader().use { it.readText() }
                 val type = object : com.google.gson.reflect.TypeToken<List<com.example.kursah_kotlin.data.remote.dto.RecipeDto>>() {}.type
                 val allRecipes = com.google.gson.Gson().fromJson<List<com.example.kursah_kotlin.data.remote.dto.RecipeDto>>(jsonString, type) ?: emptyList()
                 
-                // Фильтруем только избранные
                 val favoriteIds = favoriteEntities.map { it.id }.toSet()
                 val favorites = allRecipes.filter { favoriteIds.contains(it.id) }
                 
-                // Группируем по категориям
                 val grouped = favorites
                     .groupBy { it.category ?: "Без категории" }
                     .map { (category, recipes) ->
@@ -90,7 +90,8 @@ fun SavedRecipesScreen(
                                 id = recipe.id ?: "",
                                 title = recipe.title ?: "Без названия",
                                 description = recipe.description ?: "Нет описания",
-                                time = recipe.timeMinutes?.let { "$it мин" }
+                                time = recipe.timeMinutes?.let { "$it мин" },
+                                imageUrl = recipe.imageUrl
                             )
                         }
                     }
@@ -98,7 +99,6 @@ fun SavedRecipesScreen(
                 kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
                     categories = grouped
                     isLoading = false
-                    // Раскрываем первую категорию
                     if (grouped.isNotEmpty()) {
                         expandedCategories = setOf(grouped.first().first)
                     }
@@ -385,6 +385,16 @@ fun SavedRecipeCardItem(
                 .height(140.dp)
                 .background(Color(238, 238, 238), RoundedCornerShape(12.dp))
         ) {
+            if (!recipe.imageUrl.isNullOrBlank()) {
+                Image(
+                    painter = rememberAsyncImagePainter(model = recipe.imageUrl),
+                    contentDescription = recipe.title,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(12.dp)),
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                )
+            }
             Icon(
                 imageVector = Icons.Outlined.Bookmark,
                 contentDescription = "В закладках",

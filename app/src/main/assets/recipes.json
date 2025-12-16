@@ -7,7 +7,7 @@
     "timeMinutes": 25,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=c9b84e0839a8be321f0c5bb68ff3e1a1475fc781-16455012-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -101,7 +101,7 @@
     "timeMinutes": 90,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=da36f90e19e5d4665f68147f4e78b9074e0226b9-2286743-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -220,117 +220,6 @@
     "isRecipeOfWeek": true
   },
   {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567892",
-    "title": "Стейк из говядины с овощами гриль",
-    "description": "Сочный стейк из говяжьей вырезки с сезонными овощами на гриле.",
-    "rating": 4.8,
-    "timeMinutes": 30,
-    "category": "Горячее",
-    "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&auto=format&fit=crop",
-    "ingredients": [
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Говяжья вырезка"
-        },
-        "amount": 400.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Кабачок"
-        },
-        "amount": 1.0,
-        "unit": "шт"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Баклажан"
-        },
-        "amount": 1.0,
-        "unit": "шт"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Перец болгарский"
-        },
-        "amount": 2.0,
-        "unit": "шт"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Оливковое масло"
-        },
-        "amount": 4.0,
-        "unit": "ст.л"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Розмарин свежий"
-        },
-        "amount": 2.0,
-        "unit": "веточки"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Соль морская крупная"
-        },
-        "amount": null,
-        "unit": null
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Перец черный горошком"
-        },
-        "amount": null,
-        "unit": null
-      }
-    ],
-    "nutrients": {
-      "calories": 380,
-      "protein": 35,
-      "fat": 18,
-      "fatSaturated": 6,
-      "carbohydrates": 15,
-      "sugar": 8,
-      "fiber": 5.5,
-      "sodium": 320,
-      "potassium": 880,
-      "calcium": 45,
-      "iron": 4.5,
-      "vitaminA": 620,
-      "vitaminC": 95,
-      "vitaminD": 0.5,
-      "cholesterol": 95,
-      "omega3": 0.4
-    },
-    "tags": [
-      "С мясом",
-      "Высокобелковое",
-      "Высокое железо",
-      "Безглютеновое"
-    ],
-    "steps": [
-      "Говяжью вырезку промокните бумажным полотенцем, натрите оливковым маслом, солью и перцем.",
-      "Овощи нарежьте крупными дольками, сбрызните оливковым маслом.",
-      "Разогрейте гриль или сковороду-гриль до высокой температуры.",
-      "Обжарьте стейк по 3-4 минуты с каждой стороны для средней прожарки.",
-      "Овощи грильуйте 8-10 минут до мягкости и характерных полосок.",
-      "Дайте стейку отдохнуть 5 минут под фольгой, затем нарежьте поперек волокон.",
-      "Подавайте с овощами, украсив розмарином."
-    ],
-    "isFavorite": false,
-    "isRecipeOfWeek": false
-  },
-  {
     "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
     "title": "Борщ",
     "description": "Сытный и ароматный свекольный суп с говядиной, поданный со сметаной.",
@@ -338,7 +227,7 @@
     "timeMinutes": 90,
     "category": "Супы",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=5cb16c0bb955ec4cbd80f782f7069c5cec45b934-4893181-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -463,7 +352,7 @@
     "timeMinutes": 40,
     "category": "Супы",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=c8a6ebe87f9c6c5f23ed02a09caf697727032914-5717770-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -590,7 +479,7 @@
     "timeMinutes": 15,
     "category": "Салат",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=a4a6ea80b1aa6e4831f3d7466d8bc80190b0c84d-4437093-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -717,7 +606,7 @@
     "timeMinutes": 10,
     "category": "Салат",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=084c885940de6527be088822c08651c7e132300d-5670683-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -836,7 +725,7 @@
     "timeMinutes": 40,
     "category": "Десерты",
     "difficulty": "Сложно",
-    "imageUrl": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=880f0f566cd043f5836b3240530f97a0f8b71387-13605392-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -938,7 +827,7 @@
     "timeMinutes": 30,
     "category": "Десерты",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=37c8058eb16c438d9ee32306463c7a72cf6614c0-5251456-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1040,7 +929,7 @@
     "timeMinutes": 15,
     "category": "Завтраки",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1593616795666-1d0ec0a66780?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=fa9293871a4a6253163ce7544d04d148963d507b-4120592-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1160,7 +1049,7 @@
     "timeMinutes": 25,
     "category": "Завтраки",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1593616795666-1d0ec0a66780?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=61c29664eb612fff5c73b9c5981b96beb6256ccd-5865991-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1278,7 +1167,7 @@
     "timeMinutes": 120,
     "category": "Обеды",
     "difficulty": "Сложно",
-    "imageUrl": "https://images.unsplash.com/photo-1585937421612-70ca003675ed?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=e5a1f05e301302dc495c2e3b9f6b1e4612ababee-5245347-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1399,7 +1288,7 @@
     "timeMinutes": 50,
     "category": "Обеды",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1585937421612-70ca003675ed?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=332f0fbf71d3dbb57e68c3e5f9f450e4ab2174a8-4306866-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1532,7 +1421,7 @@
     "timeMinutes": 25,
     "category": "Ужины",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=2c898477697594318260d5e29537934e9b0a162b-4591504-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1650,7 +1539,7 @@
     "timeMinutes": 35,
     "category": "Ужины",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=27604d5ea083c328f80566b9d4ede0bcdc574408-5661188-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -1779,96 +1668,6 @@
     "isRecipeOfWeek": false
   },
   {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "title": "Паста Карбонара",
-    "description": "Классическая итальянская паста с хрустящим беконом и сливочным сырно-яичным соусом.",
-    "rating": 4.7,
-    "timeMinutes": 25,
-    "category": "Горячее",
-    "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&auto=format&fit=crop",
-    "ingredients": [
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Спагетти"
-        },
-        "amount": 400.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Бекон или гуанчиале"
-        },
-        "amount": 200.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Яйца куриные"
-        },
-        "amount": 4.0,
-        "unit": "шт"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Сыр Пекорино Романо"
-        },
-        "amount": 100.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Черный перец свежемолотый"
-        },
-        "amount": null,
-        "unit": null
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Соль"
-        },
-        "amount": null,
-        "unit": null
-      }
-    ],
-    "nutrients": {
-      "calories": 580,
-      "protein": 24,
-      "fat": 32,
-      "fatSaturated": 14,
-      "carbohydrates": 48,
-      "sugar": 2.5,
-      "fiber": 2.8,
-      "sodium": 980,
-      "potassium": 420,
-      "calcium": 180,
-      "iron": 2.8,
-      "vitaminA": 220,
-      "vitaminC": 1.5,
-      "vitaminD": 1.8,
-      "cholesterol": 210,
-      "omega3": 0.2
-    },
-    "tags": ["С мясом", "Высокобелковое", "Высокое железо"],
-    "steps": [
-      "Нарежьте бекон небольшими кусочками и обжарьте на сковороде до хрустящей корочки.",
-      "Отварите спагетти в подсоленной воде согласно инструкции на упаковке, сохраните 1 стакан воды от варки.",
-      "В миске взбейте яйца, добавьте тертый сыр и обильно поперчите.",
-      "Слейте воду с пасты, оставив немного жидкости, и быстро смешайте с беконом.",
-      "Снимите сковороду с огня, добавьте яично-сырную смесь, интенсивно помешивая.",
-      "Добавляйте воду от варки пасты по необходимости для получения кремовой консистенции.",
-      "Подавайте немедленно, посыпав дополнительным сыром и перцем."
-    ],
-    "isFavorite": false,
-    "isRecipeOfWeek": false
-  },
-  {
     "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567891",
     "title": "Жаркое из свинины с картофелем",
     "description": "Ароматное жаркое из нежной свинины с картофелем и овощами в горшочке.",
@@ -1876,7 +1675,7 @@
     "timeMinutes": 90,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?w=800&auto=format&fit=crop",
+    "imageUrl": "https://www.огнибаку.рф/upload/iblock/70c/70c830b455f51533e00ef9949bc61945.jpg",
     "ingredients": [
       {
         "ingredient": {
@@ -1998,7 +1797,7 @@
     "timeMinutes": 30,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&auto=format&fit=crop",
+    "imageUrl": "https://food.pibig.info/uploads/posts/2023-09/1693931596_food-pibig-info-p-restorannie-blyuda-iz-svinini-instagram-29.jpg",
     "ingredients": [
       {
         "ingredient": {
@@ -2104,7 +1903,7 @@
     "timeMinutes": 50,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=a5cdc1bdde617335124ec8b6d4628be2dbd36854-5553356-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2225,7 +2024,7 @@
     "timeMinutes": 75,
     "category": "Горячее",
     "difficulty": "Сложно",
-    "imageUrl": "https://images.unsplash.com/photo-1619895092538-128341789043?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=8fb1faeb939ae9c0b5ab8a873f01c69557e9039d-4570234-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2362,7 +2161,7 @@
     "timeMinutes": 60,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=3647b13d28486ce613f4e26cdc599384775e0d23-4571539-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2492,7 +2291,7 @@
     "timeMinutes": 40,
     "category": "Горячее",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=b273dc3433e225899ddd6013c22f13c81a047e18-13308934-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2622,7 +2421,7 @@
     "timeMinutes": 60,
     "category": "Горячее",
     "difficulty": "Сложно",
-    "imageUrl": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=bf2c6c9356eceea911c3bb6e64aabffebe41c0dd-5220849-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2751,7 +2550,7 @@
     "timeMinutes": 70,
     "category": "Горячее",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=984e9ff81fe148b6f0ef90ad90630dc6011b51ae-5476635-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2882,7 +2681,7 @@
     "timeMinutes": 60,
     "category": "Горячее",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=0c8d575b04fb80b96df9454f7967f3191743df5e-4472083-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -2997,7 +2796,7 @@
     "timeMinutes": 25,
     "category": "Горячее",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=5b2fe01d2d2ce4916ba164ce4bcbb3dfde80e7de-3727959-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -3104,14 +2903,14 @@
     "isRecipeOfWeek": false
   },
   {
-    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
-    "title": "Борщ украинский",
-    "description": "Сытный и ароматный свекольный суп с говядиной, поданный со сметаной.",
-    "rating": 4.8,
-    "timeMinutes": 90,
+    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+    "title": "Щи с квашеной капустой",
+    "description": "Традиционные русские щи на говяжьем бульоне с квашеной капустой и сметаной.",
+    "rating": 4.6,
+    "timeMinutes": 120,
     "category": "Супы",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=b43e6fc2e696c5a1400dd4273350e2230251a95d-8184004-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
@@ -3124,17 +2923,9 @@
       {
         "ingredient": {
           "id": null,
-          "name": "Свекла"
+          "name": "Квашеная капуста"
         },
-        "amount": 300.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Капуста белокочанная"
-        },
-        "amount": 200.0,
+        "amount": 400.0,
         "unit": "г"
       },
       {
@@ -3150,120 +2941,6 @@
           "id": null,
           "name": "Лук репчатый"
         },
-        "amount": 100.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Морковь"
-        },
-        "amount": 100.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Томатная паста"
-        },
-        "amount": 2.0,
-        "unit": "ст.л"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Уксус столовый"
-        },
-        "amount": 1.0,
-        "unit": "ст.л"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Сметана"
-        },
-        "amount": null,
-        "unit": null
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Зелень (укроп, петрушка)"
-        },
-        "amount": null,
-        "unit": null
-      }
-    ],
-    "nutrients": {
-      "calories": 320,
-      "protein": 22,
-      "fat": 12,
-      "fatSaturated": 4,
-      "carbohydrates": 35,
-      "sugar": 8,
-      "fiber": 6,
-      "sodium": 850,
-      "potassium": 780,
-      "calcium": 70,
-      "iron": 3.5,
-      "vitaminA": 650,
-      "vitaminC": 30,
-      "vitaminD": 0.2,
-      "cholesterol": 60,
-      "omega3": 0.1
-    },
-    "tags": ["С мясом", "Высокое железо"],
-    "steps": [
-      "Говядину залейте 3 литрами воды, доведите до кипения, снимите пену и варите 1,5 часа на медленном огне.",
-      "Натрите свеклу и морковь на крупной терке, лук мелко нарежьте.",
-      "Свеклу тушите с добавлением уксуса и томатной пасты 15 минут для сохранения цвета.",
-      "Добавьте в бульон нарезанный картофель и капусту, варите 15 минут.",
-      "Обжарьте лук и морковь на растительном масле до мягкости.",
-      "Добавьте тушеную свеклу и обжаренные овощи в бульон, варите еще 10 минут.",
-      "Перед подачей дайте борщу настояться 20-30 минут, подавайте со сметаной и зеленью."
-    ],
-    "isFavorite": false,
-    "isRecipeOfWeek": false
-  },
-  {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567898",
-    "title": "Фаршированные перцы",
-    "description": "Болгарские перцы, начиненные ароматным мясным фаршем с рисом, запеченные в томатном соусе.",
-    "rating": 4.6,
-    "timeMinutes": 70,
-    "category": "Горячее",
-    "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop",
-    "ingredients": [
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Перец болгарский (крупный)"
-        },
-        "amount": 6.0,
-        "unit": "шт"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Смешанный фарш (говядина+свинина)"
-        },
-        "amount": 600.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Рис отварной"
-        },
-        "amount": 150.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Лук репчатый"
-        },
         "amount": 2.0,
         "unit": "шт"
       },
@@ -3280,7 +2957,7 @@
           "id": null,
           "name": "Томатная паста"
         },
-        "amount": 3.0,
+        "amount": 2.0,
         "unit": "ст.л"
       },
       {
@@ -3288,7 +2965,7 @@
           "id": null,
           "name": "Сметана"
         },
-        "amount": 200.0,
+        "amount": 100.0,
         "unit": "г"
       },
       {
@@ -3296,8 +2973,16 @@
           "id": null,
           "name": "Растительное масло"
         },
-        "amount": 3.0,
+        "amount": 2.0,
         "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лавровый лист"
+        },
+        "amount": 2.0,
+        "unit": "шт"
       },
       {
         "ingredient": {
@@ -3310,74 +2995,77 @@
       {
         "ingredient": {
           "id": null,
-          "name": "Перец черный молотый"
+          "name": "Перец черный горошком"
         },
-        "amount": null,
-        "unit": null
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Зелень укропа"
-        },
-        "amount": 20.0,
-        "unit": "г"
+        "amount": 5.0,
+        "unit": "шт"
       }
     ],
     "nutrients": {
       "calories": 280,
       "protein": 20,
-      "fat": 15,
-      "fatSaturated": 5,
-      "carbohydrates": 18,
-      "sugar": 7,
-      "fiber": 3.5,
-      "sodium": 500,
-      "potassium": 520,
-      "calcium": 80,
-      "iron": 2.8,
-      "vitaminA": 1050,
-      "vitaminC": 180,
-      "vitaminD": 0.3,
-      "cholesterol": 70,
-      "omega3": 0.3
+      "fat": 10,
+      "fatSaturated": 3,
+      "carbohydrates": 30,
+      "sugar": 6,
+      "fiber": 5,
+      "sodium": 800,
+      "potassium": 650,
+      "calcium": 70,
+      "iron": 3.0,
+      "vitaminA": 450,
+      "vitaminC": 40,
+      "vitaminD": 0.5,
+      "cholesterol": 50,
+      "omega3": 0.2
     },
-    "tags": ["С мясом", "Высокобелковое", "Высокое железо"],
+    "tags": [
+      "С мясом",
+      "Традиционное",
+      "Зимнее блюдо"
+    ],
     "steps": [
-      "У перцев срежьте верхушки, удалите семена и перегородки.",
-      "Лук и морковь мелко нарежьте, обжарьте на растительном масле до мягкости.",
-      "Смешайте фарш, отварной рис, обжаренные овощи, соль и перец.",
-      "Нафаршируйте перцы полученной начинкой.",
-      "Для соуса смешайте томатную пасту, сметану и 400 мл воды.",
-      "Уложите перцы в глубокую форму, залейте соусом.",
-      "Накройте крышкой или фольгой и запекайте при 180°C 50 минут.",
-      "Подавайте горячими, посыпав свежей зеленью."
+      "Говядину залейте 3 литрами воды, доведите до кипения, снимите пену и варите 1,5 часа.",
+      "Квашеную капусту промойте и отожмите, если она слишком кислая.",
+      "Лук и морковь обжарьте на растительном масле с томатной пастой.",
+      "Добавьте квашеную капусту к обжаренным овощам и тушите 15 минут.",
+      "В готовый бульон добавьте нарезанный картофель, варите 15 минут.",
+      "Добавьте тушеные овощи с капустой, лавровый лист и перец, варите еще 15 минут.",
+      "Дайте щам настояться 20-30 минут, подавайте со сметаной."
     ],
     "isFavorite": false,
     "isRecipeOfWeek": false
   },
   {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567900",
-    "title": "Рыба в кляре",
-    "description": "Нежное филе белой рыбы в хрустящем кляре, обжаренное до золотистого цвета.",
-    "rating": 4.4,
-    "timeMinutes": 25,
-    "category": "Горячее",
+    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789015",
+    "title": "Крем-суп из шампиньонов",
+    "description": "Нежный сливочный суп из свежих шампиньонов с гренками и зеленью.",
+    "rating": 4.5,
+    "timeMinutes": 35,
+    "category": "Супы",
     "difficulty": "Легко",
-    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop",
+    "imageUrl": "https://krimlanch.ru/wp-content/uploads/2024/08/krem-sup-iz-shampinonov.jpeg",
     "ingredients": [
       {
         "ingredient": {
           "id": null,
-          "name": "Филе трески или пикши"
+          "name": "Шампиньоны свежие"
         },
-        "amount": 600.0,
+        "amount": 500.0,
         "unit": "г"
       },
       {
         "ingredient": {
           "id": null,
-          "name": "Яйца куриные"
+          "name": "Лук репчатый"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Картофель"
         },
         "amount": 2.0,
         "unit": "шт"
@@ -3385,34 +3073,50 @@
       {
         "ingredient": {
           "id": null,
-          "name": "Мука пшеничная"
+          "name": "Сливки 20%"
         },
-        "amount": 100.0,
+        "amount": 200.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливочное масло"
+        },
+        "amount": 50.0,
         "unit": "г"
       },
       {
         "ingredient": {
           "id": null,
-          "name": "Газированная вода"
+          "name": "Чеснок"
         },
-        "amount": 100.0,
-        "unit": "мл"
+        "amount": 2.0,
+        "unit": "зубчика"
       },
       {
         "ingredient": {
           "id": null,
-          "name": "Лимон"
+          "name": "Бульон овощной"
         },
-        "amount": 0.5,
-        "unit": "шт"
+        "amount": 1.0,
+        "unit": "л"
       },
       {
         "ingredient": {
           "id": null,
-          "name": "Растительное масло для жарки"
+          "name": "Белый хлеб"
         },
-        "amount": 200.0,
-        "unit": "мл"
+        "amount": 4.0,
+        "unit": "ломтика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зелень петрушки"
+        },
+        "amount": 20.0,
+        "unit": "г"
       },
       {
         "ingredient": {
@@ -3429,191 +3133,58 @@
         },
         "amount": null,
         "unit": null
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Укроп свежий"
-        },
-        "amount": 10.0,
-        "unit": "г"
       }
     ],
     "nutrients": {
-      "calories": 320,
-      "protein": 30,
-      "fat": 18,
-      "fatSaturated": 2,
-      "carbohydrates": 12,
-      "sugar": 0.5,
-      "fiber": 0.5,
-      "sodium": 380,
-      "potassium": 550,
-      "calcium": 30,
-      "iron": 1.2,
-      "vitaminA": 120,
-      "vitaminC": 10,
-      "vitaminD": 5.0,
-      "cholesterol": 140,
-      "omega3": 0.6
-    },
-    "tags": ["С рыбой", "Высокобелковое", "Быстрое"],
-    "steps": [
-      "Рыбное филе нарежьте на порционные куски, промокните, посолите и поперчите.",
-      "Приготовьте кляр: взбейте яйца с щепоткой соли, постепенно добавьте муку и газированную воду до консистенции густой сметаны.",
-      "В глубокой сковороде или сотейнике разогрейте масло (слой 1.5-2 см).",
-      "Каждый кусок рыбы обмакните в кляр и аккуратно опустите в разогретое масло.",
-      "Обжарьте с обеих сторон до золотисто-коричневого цвета (около 4-5 минут с каждой стороны).",
-      "Готовую рыбу выложите на бумажные полотенца, чтобы удалить излишки масла.",
-      "Подавайте горячей с дольками лимона и свежим укропом."
-    ],
-    "isFavorite": false,
-    "isRecipeOfWeek": false
-  },
-  {
-    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
-    "title": "Борщ украинский",
-    "description": "Сытный и ароматный свекольный суп с говядиной, поданный со сметаной.",
-    "rating": 4.8,
-    "timeMinutes": 90,
-    "category": "Супы",
-    "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop",
-    "ingredients": [
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Говядина на кости"
-        },
-        "amount": 500.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Свекла"
-        },
-        "amount": 300.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Капуста белокочанная"
-        },
-        "amount": 200.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Картофель"
-        },
-        "amount": 300.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Лук репчатый"
-        },
-        "amount": 100.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Морковь"
-        },
-        "amount": 100.0,
-        "unit": "г"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Томатная паста"
-        },
-        "amount": 2.0,
-        "unit": "ст.л"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Уксус столовый"
-        },
-        "amount": 1.0,
-        "unit": "ст.л"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Сметана"
-        },
-        "amount": null,
-        "unit": null
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Зелень (укроп, петрушка)"
-        },
-        "amount": null,
-        "unit": null
-      }
-    ],
-    "nutrients": {
-      "calories": 320,
-      "protein": 22,
-      "fat": 12,
-      "fatSaturated": 4,
-      "carbohydrates": 35,
-      "sugar": 8,
-      "fiber": 6,
-      "sodium": 850,
-      "potassium": 780,
-      "calcium": 70,
-      "iron": 3.5,
-      "vitaminA": 650,
-      "vitaminC": 30,
-      "vitaminD": 0.2,
-      "cholesterol": 60,
+      "calories": 240,
+      "protein": 8,
+      "fat": 15,
+      "fatSaturated": 8,
+      "carbohydrates": 20,
+      "sugar": 4,
+      "fiber": 3,
+      "sodium": 500,
+      "potassium": 580,
+      "calcium": 90,
+      "iron": 1.8,
+      "vitaminA": 350,
+      "vitaminC": 15,
+      "vitaminD": 1.5,
+      "cholesterol": 45,
       "omega3": 0.1
     },
-    "tags": ["С мясом", "Высокое железо"],
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "С грибами",
+      "Сливочное"
+    ],
     "steps": [
-      "Говядину залейте 3 литрами воды, доведите до кипения, снимите пену и варите 1,5 часа на медленном огне.",
-      "Натрите свеклу и морковь на крупной терке, лук мелко нарежьте.",
-      "Свеклу тушите с добавлением уксуса и томатной пасты 15 минут для сохранения цвета.",
-      "Добавьте в бульон нарезанный картофель и капусту, варите 15 минут.",
-      "Обжарьте лук и морковь на растительном масле до мягкости.",
-      "Добавьте тушеную свеклу и обжаренные овощи в бульон, варите еще 10 минут.",
-      "Перед подачей дайте борщу настояться 20-30 минут, подавайте со сметаной и зеленью."
+      "Грибы нарежьте пластинками, лук мелкими кубиками.",
+      "Обжарьте лук на сливочном масле до прозрачности, добавьте грибы и обжаривайте 10 минут.",
+      "Картофель нарежьте кубиками, добавьте к грибам, залейте бульоном и варите 20 минут.",
+      "Измельчите суп блендером до однородной консистенции.",
+      "Добавьте сливки, прогрейте 5 минут, не доводя до кипения.",
+      "Для гренок хлеб нарежьте кубиками, обжарьте на сухой сковороде с чесноком.",
+      "Подавайте суп с гренками и свежей петрушкой."
     ],
     "isFavorite": false,
     "isRecipeOfWeek": false
   },
   {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567898",
-    "title": "Фаршированные перцы",
-    "description": "Болгарские перцы, начиненные ароматным мясным фаршем с рисом, запеченные в томатном соусе.",
-    "rating": 4.6,
-    "timeMinutes": 70,
-    "category": "Горячее",
+    "id": "b2c3d4e5-f6a7-8901-bcde-f23456789016",
+    "title": "Харчо",
+    "description": "Острый грузинский суп с говядиной, рисом, грецкими орехами и традиционными специями.",
+    "rating": 4.7,
+    "timeMinutes": 100,
+    "category": "Супы",
     "difficulty": "Средне",
-    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=ddf15dbfdd3e035be02366d3cb7cd146e7ba046f-5289357-images-thumbs&n=13",
     "ingredients": [
       {
         "ingredient": {
           "id": null,
-          "name": "Перец болгарский (крупный)"
-        },
-        "amount": 6.0,
-        "unit": "шт"
-      },
-      {
-        "ingredient": {
-          "id": null,
-          "name": "Смешанный фарш (говядина+свинина)"
+          "name": "Говядина (грудинка)"
         },
         "amount": 600.0,
         "unit": "г"
@@ -3621,7 +3192,1295 @@
       {
         "ingredient": {
           "id": null,
-          "name": "Рис отварной"
+          "name": "Рис"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Томатная паста"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Грецкие орехи"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 5.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Хмели-сунели"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кинза свежая"
+        },
+        "amount": 30.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ткемали или лимонный сок"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец красный острый"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 25,
+      "fat": 18,
+      "fatSaturated": 4,
+      "carbohydrates": 25,
+      "sugar": 5,
+      "fiber": 4,
+      "sodium": 700,
+      "potassium": 620,
+      "calcium": 60,
+      "iron": 4.0,
+      "vitaminA": 280,
+      "vitaminC": 20,
+      "vitaminD": 0.3,
+      "cholesterol": 65,
+      "omega3": 1.2
+    },
+    "tags": [
+      "С мясом",
+      "Острое",
+      "Грузинская кухня",
+      "Высокое железо"
+    ],
+    "steps": [
+      "Говядину нарежьте кубиками, залейте 3 литрами воды, варите 1,5 часа.",
+      "Лук нарежьте полукольцами, обжарьте до золотистого цвета.",
+      "Добавьте томатную пасту к луку, обжаривайте 5 минут.",
+      "Грецкие орехи измельчите в блендере с чесноком и зеленью.",
+      "В готовый бульон добавьте рис, варите 15 минут.",
+      "Добавьте обжаренный лук с томатом, ореховую пасту и специи.",
+      "Варите еще 10 минут, добавьте ткемали или лимонный сок.",
+      "Подавайте горячим, посыпав свежей кинзой."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-345678901236",
+    "title": "Цезарь с курицей",
+    "description": "Классический салат Цезарь с куриной грудкой, сухариками и сыром пармезан.",
+    "rating": 4.7,
+    "timeMinutes": 20,
+    "category": "Салат",
+    "difficulty": "Легко",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=49cb6d9e7289d763023a0a0675b042bff69169bf-5888917-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Куриное филе"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Листья салата романо"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр пармезан"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Белый хлеб"
+        },
+        "amount": 4.0,
+        "unit": "ломтика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 2.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Анчоусы"
+        },
+        "amount": 4.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Горчица дижонская"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 100.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонный сок"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Вустерширский соус"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 380,
+      "protein": 32,
+      "fat": 24,
+      "fatSaturated": 7,
+      "carbohydrates": 12,
+      "sugar": 2,
+      "fiber": 2.5,
+      "sodium": 650,
+      "potassium": 480,
+      "calcium": 280,
+      "iron": 2.2,
+      "vitaminA": 420,
+      "vitaminC": 25,
+      "vitaminD": 1.2,
+      "cholesterol": 160,
+      "omega3": 0.8
+    },
+    "tags": [
+      "С мясом",
+      "Высокобелковое",
+      "Классическое"
+    ],
+    "steps": [
+      "Куриное филе обжарьте на оливковом масле до готовности, нарежьте полосками.",
+      "Хлеб нарежьте кубиками, обжарьте с чесноком до хрустящей корочки.",
+      "Для заправки смешайте желтки, лимонный сок, горчицу, анчоусы, вустерширский соус.",
+      "Постепенно влейте оливковое масло, взбивая до эмульсии.",
+      "Листья салата порвите руками, добавьте курицу и сухарики.",
+      "Полейте заправкой, аккуратно перемешайте.",
+      "Посыпьте тертым пармезаном и свежемолотым перцем."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-345678901237",
+    "title": "Салат из свеклы с козьим сыром",
+    "description": "Салат из запеченной свеклы с нежным козьим сыром, грецкими орехами и медовой заправкой.",
+    "rating": 4.5,
+    "timeMinutes": 40,
+    "category": "Салат",
+    "difficulty": "Легко",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=fa2ea787b056d7e8ea9b6013e9acac71929f289d-12652282-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Свекла"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр козий"
+        },
+        "amount": 150.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Руккола"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Грецкие орехи"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мед"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Дижонская горчица"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Бальзамический уксус"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 280,
+      "protein": 10,
+      "fat": 18,
+      "fatSaturated": 5,
+      "carbohydrates": 22,
+      "sugar": 16,
+      "fiber": 5.5,
+      "sodium": 320,
+      "potassium": 580,
+      "calcium": 120,
+      "iron": 3.5,
+      "vitaminA": 180,
+      "vitaminC": 15,
+      "vitaminD": 0.2,
+      "cholesterol": 20,
+      "omega3": 1.5
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Полезное",
+      "Сырое"
+    ],
+    "steps": [
+      "Свеклу вымойте, заверните в фольгу и запекайте при 200°C 30-40 минут до мягкости.",
+      "Очистите свеклу, нарежьте тонкими ломтиками.",
+      "Грецкие орехи обжарьте на сухой сковороде 3-4 минуты.",
+      "Для заправки смешайте мед, горчицу, оливковое масло и бальзамический уксус.",
+      "На тарелку выложите рукколу, сверху ломтики свеклы.",
+      "Покрошите козий сыр, посыпьте грецкими орехами.",
+      "Полейте медовой заправкой, посолите и поперчите."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-345678901238",
+    "title": "Оливье классический",
+    "description": "Традиционный салат оливье с колбасой, овощами, яйцами и майонезом.",
+    "rating": 4.6,
+    "timeMinutes": 30,
+    "category": "Салат",
+    "difficulty": "Легко",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=e7232d2f0b60cf0eef09f48b15aa9ea7679a3df7-5498735-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Докторская колбаса"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Картофель"
+        },
+        "amount": 4.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Морковь"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 4.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Огурцы соленые"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зеленый горошек консервированный"
+        },
+        "amount": 1.0,
+        "unit": "банка"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Майонез"
+        },
+        "amount": 150.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Укроп свежий"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 12,
+      "fat": 22,
+      "fatSaturated": 4,
+      "carbohydrates": 25,
+      "sugar": 5,
+      "fiber": 3.5,
+      "sodium": 750,
+      "potassium": 520,
+      "calcium": 45,
+      "iron": 2.0,
+      "vitaminA": 850,
+      "vitaminC": 20,
+      "vitaminD": 1.5,
+      "cholesterol": 180,
+      "omega3": 0.3
+    },
+    "tags": [
+      "Традиционное",
+      "Праздничное",
+      "Классическое"
+    ],
+    "steps": [
+      "Картофель и морковь отварите в мундире до готовности, очистите.",
+      "Яйца отварите вкрутую (8-9 минут), остудите и очистите.",
+      "Все ингредиенты нарежьте мелкими кубиками одинакового размера.",
+      "Добавьте зеленый горошек, предварительно слив жидкость.",
+      "Заправьте майонезом, посолите и поперчите по вкусу.",
+      "Аккуратно перемешайте, стараясь не размять ингредиенты.",
+      "Украсьте свежим укропом перед подачей."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-def0-456789012347",
+    "title": "Чизкейк Нью-Йорк",
+    "description": "Классический чизкейк с нежной творожной массой на песочной основе.",
+    "rating": 4.8,
+    "timeMinutes": 90,
+    "category": "Десерты",
+    "difficulty": "Сложно",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=7bb2473ead66328ebba5af0b6bbf1b0f861f6ed8-3689749-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр творожный"
+        },
+        "amount": 900.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Печенье песочное"
+        },
+        "amount": 250.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливочное масло"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сметана"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 4.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ванильный экстракт"
+        },
+        "amount": 2.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонная цедра"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мука пшеничная"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": 0.5,
+        "unit": "ч.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 450,
+      "protein": 12,
+      "fat": 32,
+      "fatSaturated": 18,
+      "carbohydrates": 35,
+      "sugar": 25,
+      "fiber": 0.5,
+      "sodium": 380,
+      "potassium": 180,
+      "calcium": 120,
+      "iron": 1.2,
+      "vitaminA": 950,
+      "vitaminC": 1,
+      "vitaminD": 1.8,
+      "cholesterol": 180,
+      "omega3": 0.2
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Классическое",
+      "Сырное"
+    ],
+    "steps": [
+      "Печенье измельчите в крошку, смешайте с растопленным сливочным маслом.",
+      "Выложите массу в форму, утрамбуйте и уберите в холодильник.",
+      "Сыр творожный взбейте с сахаром до гладкости.",
+      "Добавьте яйца по одному, продолжая взбивать.",
+      "Добавьте сметану, ваниль, лимонную цедру, муку и соль.",
+      "Вылейте массу на основу, разровняйте.",
+      "Выпекайте на водяной бане при 160°C 1 час, затем остудите в духовке.",
+      "Уберите в холодильник на 6 часов или на ночь."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-def0-456789012348",
+    "title": "Шоколадный фондан",
+    "description": "Десерт с жидкой шоколадной сердцевиной, который тает во рту.",
+    "rating": 4.9,
+    "timeMinutes": 25,
+    "category": "Десерты",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=c3d6bac7b827faaa96831fe73de5554c8890a78a-9246003-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Темный шоколад 70%"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливочное масло"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мука пшеничная"
+        },
+        "amount": 60.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Какао-порошок"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": 1.0,
+        "unit": "щепотка"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ванильное мороженое"
+        },
+        "amount": 4.0,
+        "unit": "шарика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахарная пудра"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 480,
+      "protein": 8,
+      "fat": 32,
+      "fatSaturated": 18,
+      "carbohydrates": 42,
+      "sugar": 30,
+      "fiber": 4.5,
+      "sodium": 120,
+      "potassium": 280,
+      "calcium": 45,
+      "iron": 4.2,
+      "vitaminA": 420,
+      "vitaminC": 0,
+      "vitaminD": 1.2,
+      "cholesterol": 160,
+      "omega3": 0.1
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Шоколадное",
+      "Ресторанное"
+    ],
+    "steps": [
+      "Шоколад и масло растопите на водяной бане, остудите.",
+      "Яйца взбейте с сахаром до пышной светлой массы.",
+      "Аккуратно вмешайте шоколадную массу в яичную.",
+      "Просейте муку с какао и солью, аккуратно перемешайте.",
+      "Формы смажьте маслом и посыпьте какао.",
+      "Разлейте тесто по формам, заполнив на 3/4.",
+      "Выпекайте при 220°C 8-10 минут (края должны схватиться, середина остаться жидкой).",
+      "Немедленно подавайте, посыпав сахарной пудрой, с шариком мороженого."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-def0-456789012349",
+    "title": "Яблочный штрудель",
+    "description": "Тонкое слоеное тесто с яблочной начинкой, корицей и изюмом.",
+    "rating": 4.6,
+    "timeMinutes": 60,
+    "category": "Десерты",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=8f57e4d1880e2f36e3a3bda73b617680e2e04fd6-4032894-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Тесто слоеное"
+        },
+        "amount": 500.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яблоки"
+        },
+        "amount": 6.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Изюм"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Грецкие орехи"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 150.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Корица молотая"
+        },
+        "amount": 2.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливочное масло"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сухари панировочные"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахарная пудра"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонный сок"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 380,
+      "protein": 5,
+      "fat": 18,
+      "fatSaturated": 8,
+      "carbohydrates": 52,
+      "sugar": 35,
+      "fiber": 4.5,
+      "sodium": 220,
+      "potassium": 280,
+      "calcium": 35,
+      "iron": 2.0,
+      "vitaminA": 120,
+      "vitaminC": 15,
+      "vitaminD": 0.3,
+      "cholesterol": 25,
+      "omega3": 0.8
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "С фруктами",
+      "Выпечка"
+    ],
+    "steps": [
+      "Яблоки очистите от кожуры и семян, нарежьте тонкими дольками.",
+      "Смешайте яблоки с изюмом, измельченными орехами, сахаром, корицей и лимонным соком.",
+      "Тесто раскатайте в тонкий прямоугольник.",
+      "Посыпьте тесто панировочными сухарями, оставив края свободными.",
+      "Выложите начинку на тесто, сверните в рулет.",
+      "Смажьте растопленным маслом, сделайте несколько надрезов сверху.",
+      "Выпекайте при 180°C 35-40 минут до золотистого цвета.",
+      "Подавайте теплым, посыпав сахарной пудрой."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-ef01-567890123458",
+    "title": "Авокадо-тост с яйцом пашот",
+    "description": "Питательный тост с пюре из авокадо, яйцом пашот и микрозеленью.",
+    "rating": 4.5,
+    "timeMinutes": 15,
+    "category": "Завтраки",
+    "difficulty": "Легко",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=fd88b5e5fa811b6bc4dddefc97d186476d2aa1d6-5882870-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Хлеб цельнозерновой"
+        },
+        "amount": 2.0,
+        "unit": "ломтика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Авокадо"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лимонный сок"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 1.0,
+        "unit": "зубчик"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Микрозелень"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль морская"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Хлопья красного перца"
+        },
+        "amount": 1.0,
+        "unit": "щепотка"
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 15,
+      "fat": 22,
+      "fatSaturated": 4,
+      "carbohydrates": 25,
+      "sugar": 3,
+      "fiber": 9,
+      "sodium": 380,
+      "potassium": 680,
+      "calcium": 70,
+      "iron": 2.8,
+      "vitaminA": 280,
+      "vitaminC": 20,
+      "vitaminD": 2.5,
+      "cholesterol": 370,
+      "omega3": 0.6
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Полезное",
+      "Быстрое"
+    ],
+    "steps": [
+      "Хлеб поджарьте в тостере или на сковороде.",
+      "Авокадо разомните вилкой, добавьте лимонный сок, измельченный чеснок, соль и перец.",
+      "Для яйца пашот: в кастрюле с водой создайте воронку, вбейте яйцо, варите 3-4 минуты.",
+      "Намажьте тосты авокадо-пюре.",
+      "Аккуратно выложите яйцо пашот на тост.",
+      "Посыпьте микрозеленью, хлопьями красного перца и морской солью.",
+      "Подавайте немедленно."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-ef01-567890123459",
+    "title": "Овсяная каша с ягодами и орехами",
+    "description": "Полезная овсяная каша с лесными ягодами, орехами и медом.",
+    "rating": 4.4,
+    "timeMinutes": 20,
+    "category": "Завтраки",
+    "difficulty": "Легко",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=f5f581d97f89720334b27631881e3141ffc3c525-16547823-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Овсяные хлопья"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Молоко или вода"
+        },
+        "amount": 300.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Смесь ягод (малина, черника, ежевика)"
+        },
+        "amount": 150.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Грецкие орехи"
+        },
+        "amount": 30.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мед"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Семена чиа"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Корица молотая"
+        },
+        "amount": 0.5,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": 1.0,
+        "unit": "щепотка"
+      }
+    ],
+    "nutrients": {
+      "calories": 350,
+      "protein": 12,
+      "fat": 14,
+      "fatSaturated": 3,
+      "carbohydrates": 48,
+      "sugar": 18,
+      "fiber": 8,
+      "sodium": 120,
+      "potassium": 420,
+      "calcium": 180,
+      "iron": 3.2,
+      "vitaminA": 150,
+      "vitaminC": 25,
+      "vitaminD": 1.5,
+      "cholesterol": 10,
+      "omega3": 2.5
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Полезное",
+      "Высокое содержание клетчатки"
+    ],
+    "steps": [
+      "Овсяные хлопья залейте молоком или водой, добавьте щепотку соли.",
+      "Варите на среднем огне 10-15 минут, периодически помешивая.",
+      "Грецкие орехи порубите ножом.",
+      "В готовую кашу добавьте корицу, перемешайте.",
+      "Разложите кашу по тарелкам, сверху выложите ягоды.",
+      "Посыпьте орехами и семенами чиа.",
+      "Полейте медом и подавайте теплой."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-ef01-567890123460",
+    "title": "Блины с творогом",
+    "description": "Тонкие блины с нежной творожной начинкой, поданные со сметаной или вареньем.",
+    "rating": 4.7,
+    "timeMinutes": 40,
+    "category": "Завтраки",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=615ffd77a01185cdf9b29a8a4530dc15a1752da7-9107157-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мука пшеничная"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Молоко"
+        },
+        "amount": 500.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сахар"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": 0.5,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Творог 9%"
+        },
+        "amount": 400.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Изюм"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Ванильный сахар"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сметана"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      }
+    ],
+    "nutrients": {
+      "calories": 280,
+      "protein": 15,
+      "fat": 12,
+      "fatSaturated": 5,
+      "carbohydrates": 30,
+      "sugar": 12,
+      "fiber": 1.2,
+      "sodium": 250,
+      "potassium": 280,
+      "calcium": 180,
+      "iron": 1.8,
+      "vitaminA": 220,
+      "vitaminC": 1,
+      "vitaminD": 1.8,
+      "cholesterol": 140,
+      "omega3": 0.2
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Традиционное",
+      "Высокобелковое"
+    ],
+    "steps": [
+      "Для теста смешайте яйца, сахар и соль, добавьте молоко и муку, взбейте до однородности.",
+      "Добавьте растительное масло, дайте тесту постоять 15 минут.",
+      "Выпекайте блины на хорошо разогретой сковороде с двух сторон.",
+      "Для начинки творог смешайте с изюмом, ванильным сахаром и 2 ст.л сметаны.",
+      "На каждый блин выложите 1-2 ст.л творожной начинки.",
+      "Заверните блины конвертиком или трубочкой.",
+      "Подавайте теплыми со сметаной или вареньем."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-f012-678901234569",
+    "title": "Голубцы",
+    "description": "Капустные листья, фаршированные мясным фаршем с рисом, запеченные в томатном соусе.",
+    "rating": 4.6,
+    "timeMinutes": 90,
+    "category": "Обеды",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=28730da16b11f050d8fe8082247f941e112783ff-12532418-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Капуста белокочанная"
+        },
+        "amount": 1.0,
+        "unit": "кочан"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Фарш мясной (свинина+говядина)"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Рис"
         },
         "amount": 150.0,
         "unit": "г"
@@ -3639,7 +4498,7 @@
           "id": null,
           "name": "Морковь"
         },
-        "amount": 1.0,
+        "amount": 2.0,
         "unit": "шт"
       },
       {
@@ -3669,6 +4528,14 @@
       {
         "ingredient": {
           "id": null,
+          "name": "Лавровый лист"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
           "name": "Соль"
         },
         "amount": null,
@@ -3694,31 +4561,750 @@
     "nutrients": {
       "calories": 280,
       "protein": 20,
-      "fat": 15,
-      "fatSaturated": 5,
-      "carbohydrates": 18,
-      "sugar": 7,
-      "fiber": 3.5,
-      "sodium": 500,
+      "fat": 12,
+      "fatSaturated": 4,
+      "carbohydrates": 25,
+      "sugar": 6,
+      "fiber": 4.5,
+      "sodium": 450,
       "potassium": 520,
-      "calcium": 80,
-      "iron": 2.8,
-      "vitaminA": 1050,
-      "vitaminC": 180,
-      "vitaminD": 0.3,
+      "calcium": 90,
+      "iron": 3.0,
+      "vitaminA": 650,
+      "vitaminC": 45,
+      "vitaminD": 0.5,
       "cholesterol": 70,
       "omega3": 0.3
     },
-    "tags": ["С мясом", "Высокобелковое", "Высокое железо"],
+    "tags": [
+      "С мясом",
+      "Традиционное",
+      "Сытное"
+    ],
     "steps": [
-      "У перцев срежьте верхушки, удалите семена и перегородки.",
-      "Лук и морковь мелко нарежьте, обжарьте на растительном масле до мягкости.",
-      "Смешайте фарш, отварной рис, обжаренные овощи, соль и перец.",
-      "Нафаршируйте перцы полученной начинкой.",
-      "Для соуса смешайте томатную пасту, сметану и 400 мл воды.",
-      "Уложите перцы в глубокую форму, залейте соусом.",
-      "Накройте крышкой или фольгой и запекайте при 180°C 50 минут.",
+      "Капусту разберите на листья, бланшируйте в кипящей воде 5-7 минут.",
+      "Рис отварите до полуготовности.",
+      "Лук и морковь обжарьте на растительном масле.",
+      "Смешайте фарш, рис, обжаренные овощи, соль и перец.",
+      "На каждый капустный лист выложите начинку, заверните конвертиком.",
+      "Уложите голубцы в кастрюлю, залейте смесью томатной пасты, сметаны и воды.",
+      "Добавьте лавровый лист, тушите под крышкой 1 час.",
       "Подавайте горячими, посыпав свежей зеленью."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-f012-678901234570",
+    "title": "Бефстроганов",
+    "description": "Нежные кусочки говядины в сметанном соусе с грибами, подается с картофельным пюре.",
+    "rating": 4.7,
+    "timeMinutes": 45,
+    "category": "Обеды",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=32b7f53e05728c0a6f2db1ed807c54cd0a476597-4936065-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Говяжья вырезка"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Шампиньоны"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сметана"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Томатная паста"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мука пшеничная"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливочное масло"
+        },
+        "amount": 50.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Горчица дижонская"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зелень петрушки"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      }
+    ],
+    "nutrients": {
+      "calories": 350,
+      "protein": 32,
+      "fat": 22,
+      "fatSaturated": 10,
+      "carbohydrates": 8,
+      "sugar": 4,
+      "fiber": 1.5,
+      "sodium": 380,
+      "potassium": 680,
+      "calcium": 120,
+      "iron": 4.0,
+      "vitaminA": 280,
+      "vitaminC": 10,
+      "vitaminD": 1.2,
+      "cholesterol": 110,
+      "omega3": 0.3
+    },
+    "tags": [
+      "С мясом",
+      "Высокобелковое",
+      "Классическое",
+      "С грибами"
+    ],
+    "steps": [
+      "Говядину нарежьте тонкими брусочками.",
+      "Обжарьте мясо на сильном огне до румяной корочки.",
+      "Лук нарежьте полукольцами, грибы пластинками, обжарьте на сливочном масле.",
+      "Муку обжарьте до золотистого цвета, добавьте томатную пасту.",
+      "Добавьте сметану, горчицу, соль и перец, доведите до кипения.",
+      "Соедините мясо с овощами, залейте соусом, тушите 15 минут.",
+      "Подавайте с картофельным пюре, посыпав зеленью."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-f012-678901234571",
+    "title": "Рыбные котлеты с овощным рагу",
+    "description": "Нежные рыбные котлеты из трески с морковью и луком, подаются с тушеными овощами.",
+    "rating": 4.4,
+    "timeMinutes": 50,
+    "category": "Обеды",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=464adcf0c6bc1d7117fdef4277c205cc51a015d8-5320579-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Филе трески"
+        },
+        "amount": 600.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Морковь"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Белый хлеб"
+        },
+        "amount": 100.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Молоко"
+        },
+        "amount": 100.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйцо куриное"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кабачок"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Болгарский перец"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Помидоры"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Укроп свежий"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      }
+    ],
+    "nutrients": {
+      "calories": 280,
+      "protein": 28,
+      "fat": 12,
+      "fatSaturated": 2,
+      "carbohydrates": 18,
+      "sugar": 7,
+      "fiber": 4,
+      "sodium": 420,
+      "potassium": 720,
+      "calcium": 70,
+      "iron": 2.5,
+      "vitaminA": 850,
+      "vitaminC": 45,
+      "vitaminD": 8.0,
+      "cholesterol": 120,
+      "omega3": 1.8
+    },
+    "tags": [
+      "С рыбой",
+      "Высокобелковое",
+      "Полезное",
+      "Низкокалорийное"
+    ],
+    "steps": [
+      "Хлеб замочите в молоке на 10 минут.",
+      "Рыбу, лук и морковь измельчите в мясорубке или блендере.",
+      "Добавьте яйцо, размоченный хлеб, соль и перец, перемешайте.",
+      "Сформируйте котлеты, обжарьте на растительном масле с двух сторон.",
+      "Овощи для рагу нарежьте кубиками, обжарьте 5 минут.",
+      "Добавьте нарезанные помидоры, тушите 15-20 минут.",
+      "Подавайте котлеты с овощным рагу, посыпав укропом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-7012-789012345680",
+    "title": "Куриные крылышки в медово-соевом соусе",
+    "description": "Хрустящие куриные крылышки в сладко-соленом медово-соевом соусе с кунжутом.",
+    "rating": 4.6,
+    "timeMinutes": 40,
+    "category": "Ужины",
+    "difficulty": "Легко",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=9f11772f848ca341b1f34685bbe48af63a4da8ca-5251286-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Куриные крылышки"
+        },
+        "amount": 1.0,
+        "unit": "кг"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мед"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соевый соус"
+        },
+        "amount": 5.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 4.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Имбирь свежий"
+        },
+        "amount": 20.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кунжутное масло"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Крахмал кукурузный"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кунжут семена"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Растительное масло"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Зеленый лук"
+        },
+        "amount": 3.0,
+        "unit": "стебля"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 25,
+      "fat": 18,
+      "fatSaturated": 4,
+      "carbohydrates": 18,
+      "sugar": 14,
+      "fiber": 0.8,
+      "sodium": 850,
+      "potassium": 380,
+      "calcium": 40,
+      "iron": 2.0,
+      "vitaminA": 120,
+      "vitaminC": 5,
+      "vitaminD": 0.5,
+      "cholesterol": 95,
+      "omega3": 0.4
+    },
+    "tags": [
+      "С мясом",
+      "Азиатская кухня",
+      "Хрустящее"
+    ],
+    "steps": [
+      "Крылышки промокните, посолите и поперчите.",
+      "Обваляйте крылышки в крахмале, обжарьте в масле до золотистой корочки.",
+      "Для соуса смешайте мед, соевый соус, измельченные чеснок и имбирь, кунжутное масло.",
+      "Переложите крылышки в соус, хорошо перемешайте.",
+      "Запекайте в духовке при 200°C 10-15 минут.",
+      "Посыпьте кунжутом и нарезанным зеленым луком.",
+      "Подавайте горячими с рисом или овощным салатом."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": false
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-7012-789012345681",
+    "title": "Киш с брокколи и сыром",
+    "description": "Открытый пирог на песочном тесте с нежной начинкой из брокколи, сыра и сливок.",
+    "rating": 4.5,
+    "timeMinutes": 60,
+    "category": "Ужины",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=c9088869eb6409050436ff83ab0c8807cd5f2840-4474675-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Тесто песочное"
+        },
+        "amount": 300.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Брокколи"
+        },
+        "amount": 400.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сыр твердый"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Сливки 20%"
+        },
+        "amount": 200.0,
+        "unit": "мл"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Яйца куриные"
+        },
+        "amount": 3.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лук репчатый"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Чеснок"
+        },
+        "amount": 2.0,
+        "unit": "зубчика"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мускатный орех"
+        },
+        "amount": 0.5,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 2.0,
+        "unit": "ст.л"
+      }
+    ],
+    "nutrients": {
+      "calories": 320,
+      "protein": 18,
+      "fat": 22,
+      "fatSaturated": 11,
+      "carbohydrates": 20,
+      "sugar": 4,
+      "fiber": 3.5,
+      "sodium": 450,
+      "potassium": 420,
+      "calcium": 280,
+      "iron": 2.5,
+      "vitaminA": 650,
+      "vitaminC": 85,
+      "vitaminD": 1.5,
+      "cholesterol": 180,
+      "omega3": 0.3
+    },
+    "tags": [
+      "Вегетарианское",
+      "Без мяса",
+      "Сырное",
+      "С овощами"
+    ],
+    "steps": [
+      "Тесто раскатайте, выложите в форму, сделайте бортики, наколите вилкой.",
+      "Брокколи разберите на соцветия, бланшируйте 3 минуты.",
+      "Лук и чеснок обжарьте на оливковом масле.",
+      "Яйца взбейте со сливками, добавьте мускатный орех, соль и перец.",
+      "На тесто выложите брокколи и обжаренный лук, залейте яичной смесью.",
+      "Посыпьте тертым сыром.",
+      "Выпекайте при 180°C 35-40 минут до золотистого цвета.",
+      "Подавайте теплым или холодным."
+    ],
+    "isFavorite": false,
+    "isRecipeOfWeek": true
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-7012-789012345682",
+    "title": "Стейк из тунца с салатом",
+    "description": "Стейк из тунца с кунжутной корочкой, подается с зеленым салатом и соусом из лайма.",
+    "rating": 4.7,
+    "timeMinutes": 20,
+    "category": "Ужины",
+    "difficulty": "Средне",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=c4f6b852d7afad86c2e9f0e73daea80e525346a0-8218461-images-thumbs&n=13",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Стейк тунца"
+        },
+        "amount": 400.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кунжут семена"
+        },
+        "amount": 4.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соевый соус"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Мед"
+        },
+        "amount": 1.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Лайм"
+        },
+        "amount": 2.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Салат микс"
+        },
+        "amount": 200.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Авокадо"
+        },
+        "amount": 1.0,
+        "unit": "шт"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Оливковое масло"
+        },
+        "amount": 3.0,
+        "unit": "ст.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Имбирь свежий"
+        },
+        "amount": 10.0,
+        "unit": "г"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Кунжутное масло"
+        },
+        "amount": 1.0,
+        "unit": "ч.л"
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Соль"
+        },
+        "amount": null,
+        "unit": null
+      },
+      {
+        "ingredient": {
+          "id": null,
+          "name": "Перец черный молотый"
+        },
+        "amount": null,
+        "unit": null
+      }
+    ],
+    "nutrients": {
+      "calories": 380,
+      "protein": 38,
+      "fat": 22,
+      "fatSaturated": 3,
+      "carbohydrates": 12,
+      "sugar": 6,
+      "fiber": 5.5,
+      "sodium": 680,
+      "potassium": 850,
+      "calcium": 85,
+      "iron": 3.5,
+      "vitaminA": 280,
+      "vitaminC": 35,
+      "vitaminD": 15.0,
+      "cholesterol": 65,
+      "omega3": 2.5
+    },
+    "tags": [
+      "С рыбой",
+      "Высокобелковое",
+      "Низкокалорийное",
+      "Полезное"
+    ],
+    "steps": [
+      "Тунец промокните, обваляйте в кунжуте со всех сторон.",
+      "Обжарьте стейк на сильно разогретой сковороде по 1-2 минуты с каждой стороны.",
+      "Для соуса смешайте сок лайма, соевый соус, мед, тертый имбирь и кунжутное масло.",
+      "Авокадо нарежьте дольками.",
+      "На тарелку выложите салат, авокадо и нарезанный тунец.",
+      "Полейте соусом, сбрызните оливковым маслом.",
+      "Украсьте долькой лайма и подавайте немедленно."
     ],
     "isFavorite": false,
     "isRecipeOfWeek": false

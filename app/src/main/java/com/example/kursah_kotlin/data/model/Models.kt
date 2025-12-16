@@ -16,7 +16,6 @@ data class Nutrients(
     val protein: Double? = null,
     val fat: Double? = null,
     val carbs: Double? = null,
-    // Можем добавить новые поля если они нужны в доменной модели
     val fatSaturated: Double? = null,
     val sugar: Double? = null,
     val fiber: Double? = null,

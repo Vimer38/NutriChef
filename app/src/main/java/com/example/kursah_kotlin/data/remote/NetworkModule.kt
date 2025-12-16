@@ -8,8 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkModule {
 
-    // Public test API with no key.
-    private const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
+    private const val BASE_URL = "https://api.example.com/"
 
     fun provideOkHttp(): OkHttpClient {
         val logging = HttpLoggingInterceptor().apply {

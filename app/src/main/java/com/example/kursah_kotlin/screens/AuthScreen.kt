@@ -55,6 +55,7 @@ import com.example.kursah_kotlin.data.local.DatabaseProvider
 import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
 import com.example.kursah_kotlin.ui.theme.ItalianaFontFamily
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,11 +65,15 @@ import java.util.regex.Pattern
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Preview
 @Composable
-fun AuthScreen(onContinue: () -> Unit = {}) {
+fun AuthScreen(
+    onContinue: () -> Unit = {},
+    onAlreadyAuthenticated: () -> Unit = {}
+) {
     val context = LocalContext.current
     val database = remember { DatabaseProvider.getDatabase(context) }
     val userRepository = remember { UserRepositoryImpl(database) }
     val focusManager = LocalFocusManager.current
+    val firebaseAuth = remember { FirebaseAuth.getInstance() }
 
     var loginText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
@@ -77,14 +82,19 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
-    // Состояния ошибок валидации для каждого поля
     var emailError by remember { mutableStateOf<String?>(null) }
     var passwordError by remember { mutableStateOf<String?>(null) }
     var confirmPasswordError by remember { mutableStateOf<String?>(null) }
 
     val isRegisterMode = selectedOption == "Зарегистрироваться"
 
-    // Функции валидации
+    LaunchedEffect(Unit) {
+        if (firebaseAuth.currentUser != null) {
+            onAlreadyAuthenticated()
+            return@LaunchedEffect
+        }
+    }
+
     fun validateEmail(email: String): String? {
         return when {
             email.isEmpty() -> "Email не может быть пустым"
@@ -112,20 +122,16 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
     }
 
     fun validateForm(): Boolean {
-        // Валидация email
         emailError = validateEmail(loginText)
 
-        // Валидация пароля
         passwordError = validatePassword(passwordText, isRegisterMode)
 
-        // Валидация подтверждения пароля (только для регистрации)
         if (isRegisterMode) {
             confirmPasswordError = validateConfirmPassword(passwordText, confirmPasswordText)
         } else {
             confirmPasswordError = null
         }
 
-        // Если есть хоть одна ошибка, возвращаем false
         return emailError == null && passwordError == null && confirmPasswordError == null
     }
 
@@ -149,7 +155,6 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
                 selectedOption = selectedOption,
                 onOptionSelected = {
                     selectedOption = it
-                    // Сбрасываем ошибки при переключении режима
                     emailError = null
                     passwordError = null
                     confirmPasswordError = null
@@ -158,7 +163,6 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
             )
             Spacer(modifier = Modifier.height(25.dp))
 
-            // Поле Email
             ValidatedTextField(
                 value = loginText,
                 onValueChange = {
@@ -182,7 +186,6 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Поле Пароль
             ValidatedTextField(
                 value = passwordText,
                 onValueChange = {
@@ -214,7 +217,6 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
             if (isRegisterMode) {
                 Spacer(modifier = Modifier.height(10.dp))
 
-                // Поле Подтверждение пароля
                 ValidatedTextField(
                     value = confirmPasswordText,
                     onValueChange = {
@@ -239,7 +241,6 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
 
             Spacer(modifier = Modifier.height(39.dp))
 
-            // Общее сообщение об ошибке (для ошибок сервера)
             errorMessage?.let { error ->
                 Text(
                     text = error,
@@ -264,10 +265,8 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
                 onClick = {
                     if (isLoading) return@Button
 
-                    // Сбрасываем фокус
                     focusManager.clearFocus()
 
-                    // Валидация формы
                     if (!validateForm()) {
                         errorMessage = "Исправьте ошибки в форме"
                         return@Button
@@ -285,7 +284,6 @@ fun AuthScreen(onContinue: () -> Unit = {}) {
                         result.onSuccess {
                             onContinue()
                         }.onFailure { exception ->
-                            // Лучшая обработка ошибок Firebase
                             val errorMsg = exception.message?.lowercase() ?: ""
                             errorMessage = when {
                                 errorMsg.contains("invalid-email") -> "Некорректный email адрес"
@@ -452,7 +450,6 @@ fun LoginRegisterToggle(
     }
 }
 
-// Функция проверки email с помощью регулярного выражения
 fun isValidEmail(email: String): Boolean {
     val emailRegex = Pattern.compile(
         "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$",
@@ -461,7 +458,6 @@ fun isValidEmail(email: String): Boolean {
     return emailRegex.matcher(email).matches()
 }
 
-// Альтернативная функция проверки email (более простая)
 fun isValidEmailSimple(email: String): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

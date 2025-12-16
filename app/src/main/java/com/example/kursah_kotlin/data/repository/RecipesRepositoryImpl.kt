@@ -10,7 +10,6 @@ class RecipesRepositoryImpl(
 ) : RecipesRepository {
 
     override suspend fun upsertRecipes(recipes: List<Recipe>) {
-        // TODO: Implement mapping from Recipe to RecipeEntity
         throw NotImplementedError("Not yet implemented")
     }
 
@@ -25,7 +24,6 @@ class RecipesRepositoryImpl(
         requiredIngredients: List<Ingredient>,
         nutrientFilters: NutrientFilter
     ): List<Recipe> {
-        // Базовый поиск через DAO
         val entities = recipeDao.searchBasic(query, maxTimeMinutes)
         return entities.map { it.toRecipe() }
     }
@@ -39,23 +37,22 @@ class RecipesRepositoryImpl(
         return entities.map { it.toRecipe() }
     }
 
-    // Простой маппер для преобразования Entity в Domain модель
     private fun RecipeEntity.toRecipe(): Recipe {
         return Recipe(
             id = id,
             title = title,
             timeMinutes = timeMinutes,
-            category = null, // TODO: Add category field to Entity if needed
-            tags = emptyList(), // TODO: Add tags if needed
+            category = null,
+            tags = emptyList(),
             imageUrl = null,
-            ingredients = emptyList(), // TODO: Load from cross-ref table
+            ingredients = emptyList(),
             nutrients = com.example.kursah_kotlin.data.model.Nutrients(
                 calories = calories,
                 protein = protein,
                 fat = fat,
                 carbs = carbs
             ),
-            steps = emptyList(), // TODO: Add steps if needed
+            steps = emptyList(),
             isFavorite = isFavorite
         )
     }

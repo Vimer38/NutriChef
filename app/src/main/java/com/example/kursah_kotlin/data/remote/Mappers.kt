@@ -25,7 +25,7 @@ fun RecipeDto.toEntities(): RecipeEntitiesBundle? {
         IngredientEntity(
             localId = 0,
             remoteId = it.ingredient?.id,
-            name = it.ingredient?.name ?: "" // Should not happen due to filter
+            name = it.ingredient?.name ?: ""
         )
     }
 

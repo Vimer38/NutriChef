@@ -1,5 +1,6 @@
 package com.example.kursah_kotlin.data.local.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

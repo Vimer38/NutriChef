@@ -1,8 +1,8 @@
 package com.example.kursah_kotlin.screens
 
-import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,16 +27,14 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -44,54 +42,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.kursah_kotlin.R
-import com.example.kursah_kotlin.data.local.DatabaseProvider
-import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kursah_kotlin.viewmodel.UserInfoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun UserInfoScreen(
     onSkipClick: () -> Unit = {},
-    onNextClick: () -> Unit = {}
+    onNextClick: () -> Unit = {},
+    viewModel: UserInfoViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    val database = remember { DatabaseProvider.getDatabase(context) }
-    val userRepository = remember { UserRepositoryImpl(database) }
-    val currentUser = remember { FirebaseAuth.getInstance().currentUser }
-    val coroutineScope = rememberCoroutineScope()
-    
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var age by remember { mutableStateOf("") }
-    var photoName by remember { mutableStateOf("Фото не выбрано") }
-    var photoUri by remember { mutableStateOf<Uri?>(null) }
-    var nickname by remember { mutableStateOf("") }
+    val uiState by viewModel.uiState.collectAsState()
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-        photoUri = uri
-        photoName = uri?.lastPathSegment ?: "Фото выбрано"
-    }
-    
-    LaunchedEffect(currentUser?.uid) {
-        currentUser?.let { user ->
-            val userProfile = userRepository.getUserProfile(user.uid)
-            userProfile?.let {
-                firstName = it.firstName ?: ""
-                lastName = it.lastName ?: ""
-                age = it.age ?: ""
-                nickname = it.nickname ?: ""
-                if (!it.photoPath.isNullOrBlank()) {
-                    photoUri = Uri.parse(it.photoPath)
-                    photoName = "Фото выбрано"
-                }
-            }
-        }
+        viewModel.onPhotoSelected(uri)
     }
 
     Scaffold(
@@ -168,14 +136,14 @@ fun UserInfoScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     InfoTextField(
-                        value = firstName,
-                        onValueChange = { firstName = it },
+                        value = uiState.firstName,
+                        onValueChange = { viewModel.onFirstNameChange(it) },
                         placeholder = "Имя",
                         modifier = Modifier.fillMaxWidth()
                     )
                     InfoTextField(
-                        value = lastName,
-                        onValueChange = { lastName = it },
+                        value = uiState.lastName,
+                        onValueChange = { viewModel.onLastNameChange(it) },
                         placeholder = "Фамилия",
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -193,8 +161,8 @@ fun UserInfoScreen(
                 )
 
                 InfoTextField(
-                    value = age,
-                    onValueChange = { age = it },
+                    value = uiState.age,
+                    onValueChange = { viewModel.onAgeChange(it) },
                     placeholder = "Возраст",
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -212,8 +180,8 @@ fun UserInfoScreen(
                 )
 
                 InfoTextField(
-                    value = nickname,
-                    onValueChange = { nickname = it },
+                    value = uiState.nickname,
+                    onValueChange = { viewModel.onNicknameChange(it) },
                     placeholder = "Никнейм",
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -231,28 +199,14 @@ fun UserInfoScreen(
                 )
 
                 PhotoUploadField(
-                    photoName = photoName,
-                    onPhotoNameChange = { photoName = it },
+                    photoName = uiState.photoName,
+                    onPhotoNameChange = { /* no-op, имя управляется в VM */ },
                     onUploadClick = { imagePickerLauncher.launch("image/*") }
                 )
             }
             Button(
                 onClick = {
-                    currentUser?.let { user ->
-                        coroutineScope.launch(Dispatchers.IO) {
-                            userRepository.updateUserProfile(
-                                userId = user.uid,
-                                firstName = firstName.takeIf { it.isNotEmpty() },
-                                lastName = lastName.takeIf { it.isNotEmpty() },
-                                age = age.takeIf { it.isNotEmpty() },
-                                nickname = nickname.takeIf { it.isNotEmpty() },
-                                photoPath = photoUri?.toString()
-                            )
-                            launch(Dispatchers.Main) {
-                                onNextClick()
-                            }
-                        }
-                    } ?: onNextClick()
+                    viewModel.save(onNextClick)
                 },
                 modifier = Modifier
                     .align(Alignment.BottomCenter)

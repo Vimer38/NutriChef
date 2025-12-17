@@ -34,12 +34,8 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,9 +48,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.kursah_kotlin.R
-import com.example.kursah_kotlin.data.local.DatabaseProvider
-import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
-import com.google.firebase.auth.FirebaseAuth
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kursah_kotlin.viewmodel.ProfileViewModel
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -65,57 +60,16 @@ import kotlinx.coroutines.launch
 fun ProfileScreen(
     onBackClick: () -> Unit = {},
     onNavigationClick: (String) -> Unit = {},
-    onLogoutClick: () -> Unit = {}
+    onLogoutClick: () -> Unit = {},
+    viewModel: ProfileViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    val database = remember { DatabaseProvider.getDatabase(context) }
-    val userRepository = remember { UserRepositoryImpl(database) }
-    val currentUser = remember { FirebaseAuth.getInstance().currentUser }
-    val coroutineScope = rememberCoroutineScope()
-
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var age by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var goal by remember { mutableStateOf("") }
-    var photoPath by remember { mutableStateOf<String?>(null) }
-    var nickname by remember { mutableStateOf("") }
-    var isEditing by remember { mutableStateOf(false) }
+    val uiState by viewModel.uiState.collectAsState()
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
-            photoPath = it.toString()
-            currentUser?.uid?.let { uid ->
-                coroutineScope.launch(Dispatchers.IO) {
-                    userRepository.updateUserProfile(
-                        userId = uid,
-                        photoPath = photoPath
-                    )
-                }
-            }
-        }
-    }
-
-    LaunchedEffect(currentUser?.uid) {
-        currentUser?.let { user ->
-            kotlinx.coroutines.withContext(Dispatchers.IO) {
-                val userProfile = userRepository.getUserProfile(user.uid)
-                kotlinx.coroutines.withContext(Dispatchers.Main) {
-                    userProfile?.let {
-                        firstName = it.firstName ?: ""
-                        lastName = it.lastName ?: ""
-                        age = it.age ?: ""
-                        email = it.email
-                        goal = it.goal ?: ""
-                        photoPath = it.photoPath
-                        nickname = it.nickname ?: ""
-                    } ?: run {
-                        email = user.email.orEmpty()
-                    }
-                }
-            }
+            viewModel.onPhotoPathChange(it.toString())
         }
     }
 
@@ -159,7 +113,7 @@ fun ProfileScreen(
                         modifier = Modifier
                             .size(40.dp)
                             .background(Color(238, 238, 238), RoundedCornerShape(20.dp))
-                            .clickable { isEditing = !isEditing },
+                            .clickable { viewModel.toggleEditing() },
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
@@ -200,20 +154,20 @@ fun ProfileScreen(
                         Color(238, 238, 238),
                         CircleShape
                     )
-                    .clickable(enabled = isEditing) {
+                    .clickable(enabled = uiState.isEditing) {
                         imagePickerLauncher.launch("image/*")
                     },
                 contentAlignment = Alignment.Center
             ) {
-                if (!photoPath.isNullOrBlank()) {
+                if (!uiState.photoPath.isNullOrBlank()) {
                     Image(
-                        painter = rememberAsyncImagePainter(model = Uri.parse(photoPath!!)),
+                    painter = rememberAsyncImagePainter(model = Uri.parse(uiState.photoPath!!)),
                         contentDescription = "Фото профиля",
                         modifier = Modifier.size(120.dp)
                     )
                 } else {
                     Text(
-                        text = "${firstName.firstOrNull() ?: ""}${lastName.firstOrNull() ?: ""}",
+                        text = "${uiState.firstName.firstOrNull() ?: ""}${uiState.lastName.firstOrNull() ?: ""}",
                         style = TextStyle(
                             fontFamily = PlayfairDisplayFontFamily,
                             fontSize = 48.sp,
@@ -228,9 +182,9 @@ fun ProfileScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            if (!isEditing) {
+            if (!uiState.isEditing) {
                 Text(
-                    text = "${firstName} ${lastName}".trim(),
+                    text = "${uiState.firstName} ${uiState.lastName}".trim(),
                     style = TextStyle(
                         fontFamily = PlayfairDisplayFontFamily,
                         fontSize = 24.sp,
@@ -243,41 +197,34 @@ fun ProfileScreen(
 
                 ProfileInfoItem(
                     label = "Возраст",
-                    value = age.ifBlank { "Не указан" }
+                    value = uiState.age.ifBlank { "Не указан" }
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 ProfileInfoItem(
                     label = "Почта",
-                    value = email.ifBlank { "Не указана" }
+                    value = uiState.email.ifBlank { "Не указана" }
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 ProfileInfoItem(
                     label = "Цель использования",
-                    value = goal.ifBlank { "Не указана" }
+                    value = uiState.goal.ifBlank { "Не указана" }
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 ProfileInfoItem(
                     label = "Никнейм",
-                    value = nickname.ifBlank { "Не указан" }
+                    value = uiState.nickname.ifBlank { "Не указан" }
                 )
 
                 Spacer(modifier = Modifier.height(40.dp))
 
                 Button(
-                    onClick = {
-                        coroutineScope.launch(Dispatchers.IO) {
-                            userRepository.signOut()
-                            kotlinx.coroutines.withContext(Dispatchers.Main) {
-                                onLogoutClick()
-                            }
-                        }
-                    },
+                    onClick = { viewModel.signOut(onLogoutClick) },
                     modifier = Modifier
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
@@ -300,62 +247,45 @@ fun ProfileScreen(
             } else {
                 EditableField(
                     label = "Имя",
-                    value = firstName,
-                    onValueChange = { firstName = it }
+                    value = uiState.firstName,
+                    onValueChange = { viewModel.onFirstNameChange(it) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 EditableField(
                     label = "Фамилия",
-                    value = lastName,
-                    onValueChange = { lastName = it }
+                    value = uiState.lastName,
+                    onValueChange = { viewModel.onLastNameChange(it) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 EditableField(
                     label = "Возраст",
-                    value = age,
-                    onValueChange = { age = it }
+                    value = uiState.age,
+                    onValueChange = { viewModel.onAgeChange(it) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 EditableField(
                     label = "Почта",
-                    value = email,
+                    value = uiState.email,
                     onValueChange = { },
                     enabled = false
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 EditableField(
                     label = "Цель использования",
-                    value = goal,
-                    onValueChange = { goal = it }
+                    value = uiState.goal,
+                    onValueChange = { viewModel.onGoalChange(it) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 EditableField(
                     label = "Никнейм",
-                    value = nickname,
-                    onValueChange = { nickname = it }
+                    value = uiState.nickname,
+                    onValueChange = { viewModel.onNicknameChange(it) }
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
 
                 Button(
-                    onClick = {
-                        currentUser?.uid?.let { uid ->
-                            coroutineScope.launch(Dispatchers.IO) {
-                                userRepository.updateUserProfile(
-                                    userId = uid,
-                                    firstName = firstName.takeIf { it.isNotBlank() },
-                                    lastName = lastName.takeIf { it.isNotBlank() },
-                                    age = age.takeIf { it.isNotBlank() },
-                                    goal = goal.takeIf { it.isNotBlank() },
-                                    photoPath = photoPath,
-                                    nickname = nickname.takeIf { it.isNotBlank() }
-                                )
-                                kotlinx.coroutines.withContext(Dispatchers.Main) {
-                                    isEditing = false
-                                }
-                            }
-                        }
-                    },
+                    onClick = { viewModel.saveProfile() },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(

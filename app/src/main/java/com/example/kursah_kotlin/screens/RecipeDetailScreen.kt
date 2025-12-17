@@ -1,6 +1,5 @@
 package com.example.kursah_kotlin.screens
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,14 +34,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,14 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import androidx.compose.ui.layout.ContentScale
-import com.example.kursah_kotlin.data.remote.dto.RecipeDto
-import com.example.kursah_kotlin.data.remote.toEntities
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kursah_kotlin.viewmodel.RecipeDetailViewModel
 
 
 @Preview
@@ -66,26 +59,16 @@ fun RecipeDetailScreen(
     onBackClick: () -> Unit = {},
     onBookmarkClick: () -> Unit = {},
     onNavigationClick: (String) -> Unit = {},
-    recipeId: String = ""
+    recipeId: String = "",
+    viewModel: RecipeDetailViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    var recipe by remember { mutableStateOf<RecipeDto?>(null) }
-    var isFavorite by remember { mutableStateOf(false) }
-    val coroutineScope = rememberCoroutineScope()
-
+    val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(recipeId) {
-        val found = loadRecipeById(context, recipeId)
-        recipe = found
-        
-        if (recipeId.isNotBlank()) {
-            withContext(Dispatchers.IO) {
-                val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
-                val recipeEntity = db.recipeDao().getRecipeById(recipeId)
-                isFavorite = recipeEntity?.isFavorite ?: false
-            }
-        }
+        viewModel.load(recipeId)
     }
+
+    val recipe = uiState.recipe
 
     val title = recipe?.title ?: "Рецепт"
     val timeText = recipe?.timeMinutes?.let { "$it мин" } ?: "—"
@@ -244,8 +227,8 @@ fun RecipeDetailScreen(
                 }
 
                 Icon(
-                    imageVector = if (isFavorite) Icons.Outlined.Bookmark else Icons.Default.BookmarkBorder,
-                    contentDescription = if (isFavorite) "Убрать из избранного" else "Добавить в избранное",
+                    imageVector = if (uiState.isFavorite) Icons.Outlined.Bookmark else Icons.Default.BookmarkBorder,
+                    contentDescription = if (uiState.isFavorite) "Убрать из избранного" else "Добавить в избранное",
                     tint = Color.Black,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -253,31 +236,8 @@ fun RecipeDetailScreen(
                         .size(24.dp)
                         .clickable {
                             if (recipeId.isNotBlank()) {
-                                coroutineScope.launch(Dispatchers.IO) {
-                                    val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
-                                    val recipeDao = db.recipeDao()
-
-                                    val newFavoriteState = !isFavorite
-
-                                    val existing = recipeDao.getRecipeById(recipeId)
-                                    if (existing == null && recipe != null) {
-                                        val bundle = recipe!!.toEntities()
-                                        bundle?.let { b ->
-                                            val entityWithFavorite = b.recipe.copy(isFavorite = newFavoriteState)
-                                            recipeDao.upsertRecipes(listOf(entityWithFavorite))
-                                        }
-                                    } else if (existing != null && existing.isFavorite != newFavoriteState) {
-                                        recipeDao.upsertRecipes(
-                                            listOf(existing.copy(isFavorite = newFavoriteState))
-                                        )
-                                    } else {
-                                        recipeDao.setFavorite(recipeId, newFavoriteState)
-                                    }
-
-                                    withContext(Dispatchers.Main) {
-                                        isFavorite = newFavoriteState
-                                        onBookmarkClick()
-                                    }
+                                viewModel.toggleFavorite(recipeId) {
+                                    onBookmarkClick()
                                 }
                             }
                         }
@@ -450,19 +410,3 @@ private fun SectionHeaderWithArrow(
             .background(Color(230, 230, 230))
     )
 }
-
-private suspend fun loadRecipeById(context: Context, recipeId: String): RecipeDto? {
-    if (recipeId.isBlank()) return null
-    return try {
-        val jsonString = withContext(Dispatchers.IO) {
-            context.assets.open("recipes.json").bufferedReader().use { it.readText() }
-        }
-        val type = object : TypeToken<List<RecipeDto>>() {}.type
-        val recipes = Gson().fromJson<List<RecipeDto>>(jsonString, type) ?: emptyList()
-        recipes.find { it.id == recipeId }
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
-    }
-}
-

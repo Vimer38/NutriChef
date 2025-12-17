@@ -9,7 +9,6 @@ interface ApiService {
     @GET("recipes")
     suspend fun getRecipes(): List<RecipeDto>
 
-    // TheMealDB: filter meals by category (no auth needed)
     @GET("filter.php")
     suspend fun getMealsByCategory(@Query("c") category: String): MealFilterResponse
 }

@@ -37,11 +37,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -54,8 +54,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kursah_kotlin.viewmodel.SavedRecipesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -64,55 +64,13 @@ fun SavedRecipesScreen(
     onBackClick: () -> Unit = {},
     onRecipeClick: (String) -> Unit = {},
     onViewAllClick: (String) -> Unit = {},
-    onNavigationClick: (String) -> Unit = {}
+    onNavigationClick: (String) -> Unit = {},
+    viewModel: SavedRecipesViewModel = hiltViewModel()
 ) {
-    val context = androidx.compose.ui.platform.LocalContext.current
     var expandedCategories by remember { mutableStateOf(setOf<String>()) }
-    var categories by remember { mutableStateOf<List<Pair<String, List<RecipeCard>>>>(emptyList()) }
-    var isLoading by remember { mutableStateOf(true) }
-
-    androidx.compose.runtime.LaunchedEffect(Unit) {
-        kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-            try {
-                val db = com.example.kursah_kotlin.data.local.DatabaseProvider.getDatabase(context)
-                val favoriteEntities = db.recipeDao().getFavorites()
-                
-                val jsonString = context.assets.open("recipes.json").bufferedReader().use { it.readText() }
-                val type = object : com.google.gson.reflect.TypeToken<List<com.example.kursah_kotlin.data.remote.dto.RecipeDto>>() {}.type
-                val allRecipes = com.google.gson.Gson().fromJson<List<com.example.kursah_kotlin.data.remote.dto.RecipeDto>>(jsonString, type) ?: emptyList()
-                
-                val favoriteIds = favoriteEntities.map { it.id }.toSet()
-                val favorites = allRecipes.filter { favoriteIds.contains(it.id) }
-                
-                val grouped = favorites
-                    .groupBy { it.category ?: "Без категории" }
-                    .map { (category, recipes) ->
-                        category to recipes.map { recipe ->
-                            RecipeCard(
-                                id = recipe.id ?: "",
-                                title = recipe.title ?: "Без названия",
-                                description = recipe.description ?: "Нет описания",
-                                time = recipe.timeMinutes?.let { "$it мин" },
-                                imageUrl = recipe.imageUrl
-                            )
-                        }
-                    }
-                
-                kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
-                    categories = grouped
-                    isLoading = false
-                    if (grouped.isNotEmpty()) {
-                        expandedCategories = setOf(grouped.first().first)
-                    }
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
-                    isLoading = false
-                }
-            }
-        }
-    }
+    val uiState by viewModel.uiState.collectAsState()
+    val categories = uiState.categories
+    val isLoading = uiState.isLoading
 
     Scaffold(
         topBar = {

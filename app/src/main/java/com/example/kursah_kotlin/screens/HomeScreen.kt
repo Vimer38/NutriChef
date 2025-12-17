@@ -39,15 +39,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -58,15 +57,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.example.kursah_kotlin.data.local.DatabaseProvider
-import com.example.kursah_kotlin.data.remote.dto.RecipeDto
-import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
-import com.google.firebase.auth.FirebaseAuth
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kursah_kotlin.viewmodel.HomeViewModel
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -93,22 +86,19 @@ fun HomeScreen(
     onCategoryClick: (String) -> Unit = {},
     onRecipeClick: (String) -> Unit = {},
     onSeeAllClick: (String) -> Unit = {},
-    onNavigationClick: (String) -> Unit = {}
+    onNavigationClick: (String) -> Unit = {},
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
+    val uiState by viewModel.uiState.collectAsState()
 
-    val database = remember { DatabaseProvider.getDatabase(context) }
-    val userRepository = remember { UserRepositoryImpl(database) }
-    val currentUser = remember { FirebaseAuth.getInstance().currentUser }
-
-    var firstName by remember { mutableStateOf<String?>(null) }
-    var photoPath by remember { mutableStateOf<String?>(null) }
+    val firstName = uiState.firstName
+    val photoPath = uiState.photoPath
 
     var searchText by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf("Все") }
     var showAllRecommendations by remember { mutableStateOf(false) }
     var showAllWeekly by remember { mutableStateOf(false) }
-    var isLoading by remember { mutableStateOf(true) }
+    val isLoading = uiState.isLoading
 
     var appliedTimeRange by remember { mutableStateOf(0f..120f) }
     var appliedDifficulties by remember { mutableStateOf(emptyList<String>()) }
@@ -117,7 +107,6 @@ fun HomeScreen(
     var appliedProteinRange by remember { mutableStateOf(0f..100f) }
     var appliedFatRange by remember { mutableStateOf(0f..100f) }
     var appliedCarbsRange by remember { mutableStateOf(0f..200f) }
-    var allRecipes by remember { mutableStateOf<List<RecipeCard>>(emptyList()) }
 
     var showFilterSheet by remember { mutableStateOf(false) }
     val sheetState = rememberModalBottomSheetState()
@@ -146,28 +135,8 @@ fun HomeScreen(
         )
     }
 
-    LaunchedEffect(currentUser?.uid) {
-        currentUser?.let { user ->
-            val profile = userRepository.getUserProfile(user.uid)
-            firstName = profile?.firstName ?: userName
-            photoPath = profile?.photoPath
-        } ?: run {
-            firstName = userName
-            photoPath = null
-        }
-
-        val (cards, error) = loadRecipesFromAssets(context)
-        if (cards.isNotEmpty()) {
-            allRecipes = cards
-        }
-        isLoading = false
-        if (error != null) {
-            error.printStackTrace()
-        }
-    }
-
-    val filteredRecipes = remember(allRecipes, searchText, selectedCategory, appliedTimeRange, appliedDifficulties, appliedTags, appliedCaloriesRange, appliedProteinRange, appliedFatRange, appliedCarbsRange) {
-        allRecipes.filter { recipe ->
+    val filteredRecipes = remember(uiState.allRecipes, searchText, selectedCategory, appliedTimeRange, appliedDifficulties, appliedTags, appliedCaloriesRange, appliedProteinRange, appliedFatRange, appliedCarbsRange) {
+        uiState.allRecipes.filter { recipe ->
             val matchesSearch = recipe.title.contains(searchText, ignoreCase = true)
             val matchesCategory = selectedCategory == "Все" || recipe.category == selectedCategory
             
@@ -254,7 +223,7 @@ fun HomeScreen(
                             )
                         )
                         Text(
-                            text = firstName.toString(),
+                            text = firstName,
                             style = TextStyle(
                                 fontFamily = PlayfairDisplayFontFamily,
                                 fontSize = 16.sp,
@@ -344,7 +313,7 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            items(recommendations.take(5)) { recipe ->
+                    items(recommendations.take(5)) { recipe ->
                                 RecipeCardItem(
                                     recipe = recipe,
                                     onClick = { onRecipeClick(recipe.id) }
@@ -634,46 +603,6 @@ fun RecipeCardItem(
                 )
             )
         }
-    }
-}
-
-private suspend fun loadRecipesFromAssets(
-    context: android.content.Context
-): Pair<List<RecipeCard>, Exception?> {
-    return try {
-        val jsonString = withContext(Dispatchers.IO) {
-            context.assets.open("recipes.json")
-                .bufferedReader()
-                .use { it.readText() }
-        }
-        if (jsonString.isEmpty()) {
-            return Pair(emptyList(), IOException("recipes.json пустой"))
-        }
-        val type = object : TypeToken<List<RecipeDto>>() {}.type
-        val recipes = Gson().fromJson<List<RecipeDto>>(jsonString, type) ?: emptyList()
-        val cards = recipes.mapNotNull { dto ->
-            val id = dto.id ?: return@mapNotNull null
-            val title = dto.title ?: return@mapNotNull null
-            RecipeCard(
-                id = id,
-                title = title,
-                description = dto.description ?: dto.nutrients?.calories?.let { "$it ккал" } ?: "Рецепт",
-                time = dto.timeMinutes?.let { "$it мин" },
-                category = dto.category,
-                diets = dto.tags,
-                difficulty = dto.difficulty,
-                imageUrl = dto.imageUrl,
-                rating = dto.rating,
-                isRecipeOfWeek = dto.isRecipeOfWeek,
-                calories = dto.nutrients?.calories,
-                protein = dto.nutrients?.protein,
-                fat = dto.nutrients?.fat,
-                carbs = dto.nutrients?.carbs
-            )
-        }
-        Pair(cards, null)
-    } catch (e: Exception) {
-        Pair(emptyList(), e)
     }
 }
 

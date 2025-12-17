@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,21 +45,16 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
-import com.example.kursah_kotlin.data.local.DatabaseProvider
-import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
 import com.example.kursah_kotlin.ui.theme.ItalianaFontFamily
 import com.example.kursah_kotlin.ui.theme.PlayfairDisplayFontFamily
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kursah_kotlin.viewmodel.AuthViewModel
 import java.util.regex.Pattern
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,19 +63,16 @@ import java.util.regex.Pattern
 @Composable
 fun AuthScreen(
     onContinue: () -> Unit = {},
-    onAlreadyAuthenticated: () -> Unit = {}
+    onAlreadyAuthenticated: () -> Unit = {},
+    viewModel: AuthViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    val database = remember { DatabaseProvider.getDatabase(context) }
-    val userRepository = remember { UserRepositoryImpl(database) }
     val focusManager = LocalFocusManager.current
-    val firebaseAuth = remember { FirebaseAuth.getInstance() }
+    val uiState by viewModel.uiState.collectAsState()
 
     var loginText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
     var confirmPasswordText by remember { mutableStateOf("") }
     var selectedOption by remember { mutableStateOf("Войти") }
-    var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
     var emailError by remember { mutableStateOf<String?>(null) }
@@ -89,10 +82,7 @@ fun AuthScreen(
     val isRegisterMode = selectedOption == "Зарегистрироваться"
 
     LaunchedEffect(Unit) {
-        if (firebaseAuth.currentUser != null) {
-            onAlreadyAuthenticated()
-            return@LaunchedEffect
-        }
+        viewModel.checkAlreadyAuthenticated(onAlreadyAuthenticated)
     }
 
     fun validateEmail(email: String): String? {
@@ -159,6 +149,7 @@ fun AuthScreen(
                     passwordError = null
                     confirmPasswordError = null
                     errorMessage = null
+                    viewModel.setRegisterMode(it == "Зарегистрироваться")
                 }
             )
             Spacer(modifier = Modifier.height(25.dp))
@@ -241,7 +232,10 @@ fun AuthScreen(
 
             Spacer(modifier = Modifier.height(39.dp))
 
-            errorMessage?.let { error ->
+            val globalError = uiState.authError
+            val shownError = errorMessage ?: globalError
+
+            shownError?.let { error ->
                 Text(
                     text = error,
                     color = Color.Red,
@@ -263,8 +257,6 @@ fun AuthScreen(
                 colors = ButtonDefaults.buttonColors(containerColor = Color(193, 190, 190)),
                 shape = RoundedCornerShape(13.dp),
                 onClick = {
-                    if (isLoading) return@Button
-
                     focusManager.clearFocus()
 
                     if (!validateForm()) {
@@ -272,36 +264,16 @@ fun AuthScreen(
                         return@Button
                     }
 
-                    isLoading = true
-                    CoroutineScope(Dispatchers.Main).launch {
-                        val result = if (isRegisterMode) {
-                            userRepository.signUp(loginText, passwordText)
-                        } else {
-                            userRepository.signIn(loginText, passwordText)
-                        }
-
-                        isLoading = false
-                        result.onSuccess {
-                            onContinue()
-                        }.onFailure { exception ->
-                            val errorMsg = exception.message?.lowercase() ?: ""
-                            errorMessage = when {
-                                errorMsg.contains("invalid-email") -> "Некорректный email адрес"
-                                errorMsg.contains("wrong-password") -> "Неверный пароль"
-                                errorMsg.contains("user-not-found") -> "Пользователь не найден"
-                                errorMsg.contains("email-already-in-use") -> "Пользователь с таким email уже существует"
-                                errorMsg.contains("weak-password") -> "Пароль слишком слабый. Минимум 6 символов"
-                                errorMsg.contains("network") -> "Ошибка сети. Проверьте подключение"
-                                errorMsg.contains("malformed") || errorMsg.contains("incorrect")
-                                        || errorMsg.contains("walformed") -> "Неверный email или пароль"
-                                else -> "Ошибка авторизации. Попробуйте снова"
-                            }
-                        }
-                    }
+                    viewModel.authenticate(
+                        email = loginText,
+                        password = passwordText,
+                        isRegister = isRegisterMode,
+                        onSuccess = onContinue
+                    )
                 },
-                enabled = !isLoading
+                enabled = !uiState.isLoading
             ) {
-                if (isLoading) {
+                if (uiState.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier.size(24.dp),
                         color = Color.Black

@@ -262,7 +262,7 @@ fun HomeScreen(
             }
             item {
                 LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(5.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     items(categories) { category ->
@@ -530,7 +530,7 @@ fun RecipeCardItem(
                     contentDescription = recipe.title,
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(RoundedCornerShape(12.dp)),
+                        .clip(RoundedCornerShape(13.dp)),
                     contentScale = ContentScale.Crop
                 )
             }

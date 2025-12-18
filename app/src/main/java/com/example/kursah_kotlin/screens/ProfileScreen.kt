@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,7 +39,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -112,15 +115,14 @@ fun ProfileScreen(
                     Box(
                         modifier = Modifier
                             .size(40.dp)
-                            .background(Color(238, 238, 238), RoundedCornerShape(20.dp))
+                            .background(Color.White)
                             .clickable { viewModel.toggleEditing() },
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(
-                            imageVector = Icons.Outlined.Edit,
-                            contentDescription = "Редактировать профиль",
-                            modifier = Modifier.size(20.dp),
-                            tint = Color.Black
+                        Image(
+                            painter = painterResource(id = R.drawable.pen),
+                            contentDescription = "Редактировать",
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 },
@@ -139,7 +141,8 @@ fun ProfileScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(Color(151,150,150,100))
+                .clip(RoundedCornerShape(50.dp))
                 .padding(innerPadding)
                 .padding(horizontal = 24.dp)
                 .verticalScroll(rememberScrollState()),
@@ -149,10 +152,10 @@ fun ProfileScreen(
 
             Box(
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(width = 196.dp, height = 305.dp)
+                    .clip(RoundedCornerShape(13.dp))
                     .background(
                         Color(238, 238, 238),
-                        CircleShape
                     )
                     .clickable(enabled = uiState.isEditing) {
                         imagePickerLauncher.launch("image/*")
@@ -163,7 +166,7 @@ fun ProfileScreen(
                     Image(
                     painter = rememberAsyncImagePainter(model = Uri.parse(uiState.photoPath!!)),
                         contentDescription = "Фото профиля",
-                        modifier = Modifier.size(120.dp)
+                        modifier = Modifier.size(width = 196.dp, height = 305.dp)
                     )
                 } else {
                     Text(
@@ -187,8 +190,8 @@ fun ProfileScreen(
                     text = "${uiState.firstName} ${uiState.lastName}".trim(),
                     style = TextStyle(
                         fontFamily = PlayfairDisplayFontFamily,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Normal,
                         color = Color.Black
                     )
                 )
@@ -336,9 +339,9 @@ private fun EditableField(
             enabled = enabled,
             singleLine = true,
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(238, 238, 238),
-                unfocusedContainerColor = Color(238, 238, 238),
-                disabledContainerColor = Color(238, 238, 238),
+                focusedContainerColor = Color(238, 238, 238,100),
+                unfocusedContainerColor = Color(238, 238, 238,100),
+                disabledContainerColor = Color(238, 238, 238,100),
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
@@ -347,7 +350,7 @@ private fun EditableField(
                 unfocusedTextColor = Color.Black,
                 disabledTextColor = Color.Gray
             ),
-            shape = RoundedCornerShape(12.dp),
+            shape = RoundedCornerShape(50.dp),
             textStyle = TextStyle(
                 fontFamily = PlayfairDisplayFontFamily,
                 fontSize = 16.sp
@@ -365,17 +368,17 @@ fun ProfileInfoItem(
         modifier = Modifier
             .fillMaxWidth()
             .background(
-                Color(238, 238, 238),
-                RoundedCornerShape(12.dp)
+                Color(238, 238, 238,100),
+                RoundedCornerShape(50.dp)
             )
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Text(
             text = label,
             style = TextStyle(
                 fontFamily = PlayfairDisplayFontFamily,
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 color = Color.Gray
             )
         )
@@ -384,7 +387,7 @@ fun ProfileInfoItem(
             style = TextStyle(
                 fontFamily = PlayfairDisplayFontFamily,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Medium,
+                fontWeight = FontWeight.Normal,
                 color = Color.Black
             )
         )

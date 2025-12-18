@@ -5,12 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.kursah_kotlin.data.repository.UserRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 data class AuthUiState(
     val isLoading: Boolean = false,
@@ -54,11 +55,15 @@ class AuthViewModel @Inject constructor(
 
         _uiState.value = _uiState.value.copy(isLoading = true, authError = null)
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val result = if (isRegister) {
-                userRepository.signUp(email, password)
+                withContext(Dispatchers.IO) {
+                    userRepository.signUp(email, password)
+                }
             } else {
-                userRepository.signIn(email, password)
+                withContext(Dispatchers.IO) {
+                    userRepository.signIn(email, password)
+                }
             }
 
             result.onSuccess {
@@ -82,5 +87,3 @@ class AuthViewModel @Inject constructor(
         }
     }
 }
-
-

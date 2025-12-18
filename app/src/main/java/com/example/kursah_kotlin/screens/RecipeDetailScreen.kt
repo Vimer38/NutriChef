@@ -38,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -136,7 +137,7 @@ fun RecipeDetailScreen(
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Text(
-                        text = "",
+                        text = "          ",
                         style = TextStyle(
                             fontFamily = PlayfairDisplayFontFamily,
                             fontSize = 14.sp,
@@ -221,7 +222,8 @@ fun RecipeDetailScreen(
                         contentDescription = title,
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(0.dp),
+                            .padding(0.dp)
+                            .clip(RoundedCornerShape(13.dp)),
                         contentScale = ContentScale.Crop
                     )
                 }

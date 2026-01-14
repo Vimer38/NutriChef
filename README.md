@@ -96,7 +96,14 @@ app/src/main/java/com/example/kursah_kotlin/
 
 ## 📸 Скриншоты
 
-*Добавьте скриншоты вашего приложения здесь*
+![photo_5346029773286738970_x](https://github.com/user-attachments/assets/94c69cbc-29d8-4a1c-bbd4-2a5fd06fd87b)
+![photo_5346029773286738975_x](https://github.com/user-attachments/assets/68e1e78f-8cd3-4976-8b11-6106be4c6d0a)
+![photo_5346029773286738973_x](https://github.com/user-attachments/assets/168c920f-d307-4cd4-840c-ab267c11d5e5)
+![photo_5346029773286738974_x](https://github.com/user-attachments/assets/082538a4-bd58-4805-882d-843f4e7fd472)
+![photo_5346029773286738951_x](https://github.com/user-attachments/assets/e9f36161-c267-43f5-aa9a-7083a51aca37)
+![photo_5346029773286738987_x](https://github.com/user-attachments/assets/2e85cba4-5e69-4182-8372-2180f45f7492)
+![photo_5346029773286738968_y](https://github.com/user-attachments/assets/5b32e66a-ae91-4f3b-8f05-6104e26f793b)
+![photo_5346029773286738952_x](https://github.com/user-attachments/assets/0999b7e7-d5c5-4df2-8497-c9a428603948)
 
 ## 🎯 Ключевые особенности реализации
 
